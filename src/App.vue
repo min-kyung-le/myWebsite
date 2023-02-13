@@ -135,6 +135,10 @@ export default {
 	color: #2c3e50;
 }
 
+.bgblack {
+	background-color: #000;
+}
+
 .content {
 	width: 40%;
 	min-width: 500px;
@@ -191,10 +195,10 @@ html {
 }
 #drawing_line > svg .drawing_line_polyline {
 	fill: none;
-	stroke: #000000;
+	stroke: #fff;
 	stroke-width: 2;
 }
 #drawing_line > svg .drawing_line_circle {
-	fill: #000;
+	fill: #fff;
 }
 </style>
