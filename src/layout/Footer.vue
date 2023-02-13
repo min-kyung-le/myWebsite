@@ -1,7 +1,8 @@
 <template>
-	<div>
-		<router-link to="/">Home</router-link>
-		<router-link to="/graph">Graph</router-link>
+	<div class="footerbg">
+		<router-link to="/">HOME</router-link>
+		<router-link to="/graph">WORK</router-link>
+		<router-link to="/contact">CONTACT</router-link>
 	</div>
 </template>
 

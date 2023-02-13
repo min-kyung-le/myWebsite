@@ -1,5 +1,5 @@
 <template>
-	<div class="page">
+	<div>
 		<h1>GRAPH</h1>
 	</div>
 </template>

@@ -1,5 +1,16 @@
 <template>
-	<div class="page">
+	<div>
+		<h1>HOME</h1>
+		<h1>HOME</h1>
+		<h1>HOME</h1>
+		<h1>HOME</h1>
+		<h1>HOME</h1>
+		<h1>HOME</h1>
+		<h1>HOME</h1>
+		<h1>HOME</h1>
+		<h1>HOME</h1>
+		<h1>HOME</h1>
+		<h1>HOME</h1>
 		<h1>HOME</h1>
 	</div>
 </template>
