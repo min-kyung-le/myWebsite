@@ -1,7 +1,7 @@
 <template>
-	<div id="drawing_line" class="content">
+	<div id="drawing_line" class="content scrollbar">
 		<svg class="drawing_line_svg">
-			<circle class="drawing_line_circle" cx="0" cy="0" r="8"></circle>
+			<circle class="drawing_line_circle" cx="0" cy="0" r="4"></circle>
 			<polyline class="drawing_line_polyline" points=""></polyline>
 		</svg>
 		<router-view v-slot="{ Component }">
@@ -35,14 +35,11 @@ var pointer = {
 	dist: 0,
 	scale: 1,
 	speed: 2,
-	circRadius: 8,
+	circRadius: 4,
 	updateCrds: function () {
 		if (this.x != 0) {
 			this.dist = Math.abs(this.x - this.tx + (this.y - this.ty))
-			this.scale = Math.max(
-				this.scale + ((100 - this.dist * 8) * 0.01 - this.scale) * 0.1,
-				0.25
-			) // gt 0.25 = 4px
+			this.scale = Math.max(this.scale + ((100 - this.dist * 8) * 0.01 - this.scale) * 0.1, 0.25) // gt 0.25 = 4px
 			this.tx += (this.x - this.tx) / this.speed
 			this.ty += (this.y - this.ty) / this.speed
 		}
@@ -116,11 +113,11 @@ export default {
 			}, 80)
 		},
 		fucMousedown() {
-			pointer.circRadius = 6
+			pointer.circRadius = 2
 			this.drawLine()
 		},
 		fucMouseup() {
-			pointer.circRadius = 8
+			pointer.circRadius = 4
 			this.drawLine()
 		},
 	},
@@ -128,34 +125,21 @@ export default {
 </script>
 
 <style>
-#app {
-	font-family: Avenir, Helvetica, Arial, sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	color: #2c3e50;
-}
-
-.bgblack {
-	background-color: #000;
-}
-
 .content {
-	width: 40%;
 	min-width: 500px;
-	margin: 0 auto;
 	position: relative;
 }
 
 a {
 	font-weight: lighter;
-	color: #2c3e50;
+	color: #d3d3d3;
 	text-decoration: none;
 	margin-right: 1.4em;
 }
 
 a:hover,
 a.router-link-active {
-	border-bottom: 2px solid #3498db;
+	border-bottom: 2px solid #d3d3d3;
 }
 
 .fade-enter-from,
@@ -166,13 +150,6 @@ a.router-link-active {
 .fade-enter-active,
 .fade-leave-active {
 	transition: opacity 0.5s ease-out;
-}
-
-.footerbg {
-	font-size: large;
-	position: fixed;
-	right: 15px;
-	top: 10px;
 }
 
 /* 마우스 커서 따라다니는 효과 */
