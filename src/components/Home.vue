@@ -1,17 +1,15 @@
 <template>
 	<div ref="target" class="large-font">
 		<div class="holster">
-			<div class="box-snaps-wrap">
-				<perfect-scrollbar>
-					<div ref="app1" class="home-con box-snaps">
-						<div class="con typing-demo">{{ this.left }}</div>
-						<div class="con typing-demo">{{ this.left }}</div>
-						<div class="con typing-demo">{{ this.left }}</div>
-					</div>
-					<Home2 ref="app2"></Home2>
-					<Home3 ref="app3"></Home3>
-					<Home4 ref="app4"></Home4>
-				</perfect-scrollbar>
+			<div ref="section" class="box-snaps-wrap" id="scr-t">
+				<div ref="app1" class="home-con box-snaps">
+					<div class="con typing-demo">{{ this.left }}</div>
+					<div class="con typing-demo">{{ this.left }}</div>
+					<div class="con typing-demo">{{ this.left }}</div>
+				</div>
+				<Home2 ref="app2"></Home2>
+				<Home3 ref="app3"></Home3>
+				<Home4 ref="app4"></Home4>
 			</div>
 		</div>
 	</div>
@@ -25,6 +23,7 @@ let sleep = ms => new Promise(res => setTimeout(res, ms))
 import Home2 from '@/components/Home2.vue'
 import Home3 from '@/components/Home3.vue'
 import Home4 from '@/components/Home4.vue'
+
 export default {
 	components: {
 		Home2,
@@ -39,6 +38,8 @@ export default {
 			right: '',
 			opacity: 0,
 			setOpacity: 0,
+			_scrollTop: 0,
+			scrollTopFloor: 0,
 		}
 	},
 	methods: {
@@ -59,7 +60,26 @@ export default {
 		},
 	},
 	mounted() {
-		// 섹션마다 스크롤
+		let page = 1
+		// 섹션마다 스크롤 2
+		window.addEventListener('wheel', function (e) {
+			if (e.deltaY > 0) {
+				if (page == 4) return
+				page++
+			} else if (e.deltaY < 0) {
+				if (page == 1) return
+				page--
+			}
+			this._scrollTop = window.scrollY || document.getElementById('scr-t').scrollTop
+			console.log('this._scrollTop')
+			console.log(this._scrollTop)
+
+			let posTop = (page - 1) * window.innerHeight
+			console.log('posTop')
+			console.log(posTop)
+
+			window.scrollTo({ top: posTop, behavior: 'smooth' })
+		})
 
 		this.$nextTick(() => {
 			let observer = new IntersectionObserver(e => {
