@@ -8,7 +8,7 @@
 		</div>
 		<div class="holster">
 			<div class="box-snaps-wrap">
-				<Home ref="app1" />
+				<Home ref="app1" :opacity="this.opacity" />
 				<Graph ref="app2" />
 				<Career ref="app3" />
 				<Contact ref="app4" :opacity="this.opacity" />
