@@ -60,27 +60,6 @@ export default {
 		},
 	},
 	mounted() {
-		let page = 1
-		// 섹션마다 스크롤 2
-		window.addEventListener('wheel', function (e) {
-			if (e.deltaY > 0) {
-				if (page == 4) return
-				page++
-			} else if (e.deltaY < 0) {
-				if (page == 1) return
-				page--
-			}
-			this._scrollTop = window.scrollY || document.getElementById('scr-t').scrollTop
-			console.log('this._scrollTop')
-			console.log(this._scrollTop)
-
-			let posTop = (page - 1) * window.innerHeight
-			console.log('posTop')
-			console.log(posTop)
-
-			window.scrollTo({ top: posTop, behavior: 'smooth' })
-		})
-
 		this.$nextTick(() => {
 			let observer = new IntersectionObserver(e => {
 				e.forEach(div => {
