@@ -1,15 +1,19 @@
 <template>
 	<div class="footerbg">
-		<router-link to="/">HOME</router-link>
-		<router-link to="/work">WORK</router-link>
-		<router-link to="/career">CAREER</router-link>
-		<router-link to="/contact">CONTACT</router-link>
+		<ul>
+			<li><router-link to="/">HOME</router-link></li>
+			<li><router-link to="/graph">GRAPH</router-link></li>
+			<li><router-link to="/career">CAREER</router-link></li>
+			<li><router-link to="/contact">CONTACT</router-link></li>
+		</ul>
 	</div>
 </template>
 
 <script>
 export default {
 	name: 'Footer',
+	props: {},
+	watch: {},
 }
 </script>
 

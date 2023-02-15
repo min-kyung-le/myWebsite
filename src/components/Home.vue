@@ -11,7 +11,7 @@
 <script>
 const speed = 100
 const delay = 600
-let sleep
+let sleep = ms => new Promise(res => setTimeout(res, ms))
 
 export default {
 	props: {
@@ -27,10 +27,7 @@ export default {
 	},
 	methods: {
 		async typing(letters) {
-			console.log(letters.split(' '))
-
 			const letter = letters.split('')
-
 			while (letter.length) {
 				await sleep(speed)
 				this.left += letter.shift()
@@ -44,9 +41,6 @@ export default {
 				setTimeout(this.typing(this.sentence), delay)
 			}
 		},
-	},
-	created() {
-		sleep = ms => new Promise(res => setTimeout(res, ms))
 	},
 	mounted() {
 		// 초기 실행

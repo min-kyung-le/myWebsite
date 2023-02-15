@@ -16,8 +16,13 @@
 .footerbg {
 	font-size: large;
 	position: fixed;
-	right: 10px;
-	top: 12px;
+	right: 15px;
+}
+.footerbg ul li {
+	padding: 40px 0 0 0;
+}
+ul {
+	list-style: none;
 }
 body {
 	margin: 0;
@@ -68,6 +73,7 @@ button:focus-visible {
 }
 
 ::-webkit-scrollbar-thumb {
+	border-radius: 10px;
 	background-color: rgb(136, 136, 136); /*스크롤바의 색상*/
 }
 

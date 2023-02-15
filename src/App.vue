@@ -9,10 +9,11 @@
 		<div class="holster">
 			<div class="box-snaps-wrap">
 				<Home ref="app1" :opacity="this.opacity" />
-				<Graph ref="app2" />
-				<Career ref="app3" />
-				<Contact ref="app4" :opacity="this.opacity" />
+				<Home2 ref="app2" />
+				<Home3 ref="app3" />
+				<Home4 ref="app4" />
 			</div>
+			<Footer></Footer>
 		</div>
 	</div>
 </template>
@@ -20,9 +21,9 @@
 <script>
 import Footer from '@/layout/Footer.vue'
 import Home from '@/components/Home.vue'
-import Contact from '@/components/Contact.vue'
-import Graph from '@/components/Graph.vue'
-import Career from '@/components/Career.vue'
+import Home2 from '@/components/Home2.vue'
+import Home3 from '@/components/Home3.vue'
+import Home4 from '@/components/Home4.vue'
 
 var total = 12
 var gap = 30
@@ -57,19 +58,18 @@ export default {
 	components: {
 		Footer,
 		Home,
-		Career,
-		Contact,
-		Graph,
+		Home2,
+		Home3,
+		Home4,
 	},
 	data() {
 		return {
-			content1: '여기는 홈화면입니다~ 아뭐쓰지111',
-			content3: '여기는 홈화면입니다~ 아뭐쓰지333',
 			opacity: 0,
 			setOpacity: 0,
 		}
 	},
 	mounted() {
+		//마우스 효과
 		polyline = document.querySelector('.drawing_line_polyline')
 		polyPoints = polyline.getAttribute('points')
 		circle = document.querySelector('.drawing_line_circle')

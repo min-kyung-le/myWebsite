@@ -14,7 +14,7 @@ const router = createRouter({
 			component: Home,
 		},
 		{
-			path: '/work',
+			path: '/graph',
 			component: Graph,
 		},
 		{
