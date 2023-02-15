@@ -1,5 +1,5 @@
 <template>
-	<div ref="target" class="large-font box-snaps" style="background-color: yellowgreen">
+	<div ref="target" class="large-font" style="background-color: yellowgreen">
 		<TransitionGroup tag="ul" name="fade" class="container">
 			<div v-for="item in items" class="item" :key="item">
 				{{ item }}
@@ -18,9 +18,6 @@ var getInitialItems = () => [name, email, blog, createDate]
 
 export default {
 	name: 'Contact',
-	props: {
-		opacity: Number,
-	},
 	data() {
 		return {
 			items: getInitialItems(),
@@ -42,12 +39,8 @@ export default {
 			}, 1500)
 		},
 	},
-	watch: {
-		opacity() {
-			if (this.opacity == 1) {
-				this.setTimeOutMove()
-			}
-		},
+	mounted() {
+		this.setTimeOutMove()
 	},
 }
 </script>

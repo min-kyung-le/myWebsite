@@ -12,18 +12,34 @@ const router = createRouter({
 		{
 			path: '/',
 			component: Home,
+			meta: {
+				enterClass: '',
+				leaveClass: 'animate__animated animate__fadeOutLeft',
+			},
 		},
 		{
 			path: '/graph',
 			component: Graph,
+			meta: {
+				enterClass: 'animate__animated animate__fadeInRight',
+				leaveClass: 'animate__animated animate__fadeOutLeft',
+			},
 		},
 		{
 			path: '/career',
 			component: Career,
+			meta: {
+				enterClass: 'animate__animated animate__fadeInRight',
+				leaveClass: 'animate__animated animate__fadeOutLeft',
+			},
 		},
 		{
 			path: '/contact',
 			component: Contact,
+			meta: {
+				enterClass: 'animate__animated animate__fadeInRight',
+				leaveClass: 'animate__animated animate__fadeOutLeft',
+			},
 		},
 	],
 })

@@ -17,6 +17,7 @@
 	font-size: large;
 	position: fixed;
 	right: 15px;
+	z-index: 1000;
 }
 .footerbg ul li {
 	padding: 40px 0 0 0;
@@ -68,20 +69,20 @@ button:focus-visible {
 	scroll-behavior: smooth;
 }
 
-::-webkit-scrollbar {
-	width: 6px; /*스크롤바의 너비*/
+.scrollbar ::-webkit-scrollbar {
+	width: 6px;
 }
 
-::-webkit-scrollbar-thumb {
+.scrollbar ::-webkit-scrollbar-thumb {
 	border-radius: 10px;
-	background-color: rgb(136, 136, 136); /*스크롤바의 색상*/
+	background-color: rgb(136, 136, 136);
 }
 
-::-webkit-scrollbar-track {
-	background-color: #242424; /*스크롤바 트랙 색상*/
+.scrollbar ::-webkit-scrollbar-track {
+	background-color: #242424;
 }
-
-/* a:hover {
+/* 
+a:hover {
   color: #747bff;
 }
 button {
@@ -103,16 +104,13 @@ button {
 */
 
 .box-snaps {
-	opacity: 0;
 	transition: all 1s;
 	height: 100%;
 	scroll-snap-align: start;
 	flex: none;
 }
-
 .box-snaps-wrap {
 	display: flex;
-	overflow: auto;
 	flex: none;
 	width: 100%;
 	height: 100vh;

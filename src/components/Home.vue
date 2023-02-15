@@ -2,14 +2,16 @@
 	<div ref="target" class="large-font">
 		<div class="holster">
 			<div class="box-snaps-wrap">
-				<div ref="app1" class="home-con box-snaps">
-					<div class="con typing-demo">{{ this.left }}</div>
-					<div class="con typing-demo">{{ this.left }}</div>
-					<div class="con typing-demo">{{ this.left }}</div>
-				</div>
-				<Home2 ref="app2"></Home2>
-				<Home3 ref="app3"></Home3>
-				<Home4 ref="app4"></Home4>
+				<perfect-scrollbar>
+					<div ref="app1" class="home-con box-snaps">
+						<div class="con typing-demo">{{ this.left }}</div>
+						<div class="con typing-demo">{{ this.left }}</div>
+						<div class="con typing-demo">{{ this.left }}</div>
+					</div>
+					<Home2 ref="app2"></Home2>
+					<Home3 ref="app3"></Home3>
+					<Home4 ref="app4"></Home4>
+				</perfect-scrollbar>
 			</div>
 		</div>
 	</div>
@@ -41,7 +43,6 @@ export default {
 	},
 	methods: {
 		async typing(letters) {
-			console.log('dasdf')
 			const letter = letters.split('')
 			while (letter.length) {
 				await sleep(speed)
@@ -58,6 +59,8 @@ export default {
 		},
 	},
 	mounted() {
+		// 섹션마다 스크롤
+
 		this.$nextTick(() => {
 			let observer = new IntersectionObserver(e => {
 				e.forEach(div => {

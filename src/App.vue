@@ -4,15 +4,15 @@
 			<circle class="drawing_line_circle" cx="0" cy="0" r="4"></circle>
 			<polyline class="drawing_line_polyline" points=""></polyline>
 		</svg>
-		<router-view v-slot="{ Component }">
+		<Footer></Footer>
+		<router-view v-slot="{ Component, route }">
 			<transition
-				enter-active-class="animate__animated animate__fadeInRight"
-				leave-active-class="animate__animated animate__fadeOutLeft"
+				:enter-active-class="route.meta.enterClass"
+				:leave-active-class="route.meta.leaveClass"
 				mode="out-in">
 				<component :is="Component" />
 			</transition>
 		</router-view>
-		<Footer></Footer>
 	</div>
 </template>
 

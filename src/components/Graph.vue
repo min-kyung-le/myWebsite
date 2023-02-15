@@ -1,5 +1,5 @@
 <template>
-	<div ref="target" class="box-snaps" style="background-color: orange">
+	<div ref="target" style="background-color: orange">
 		<h1>GRAPH</h1>
 	</div>
 </template>
