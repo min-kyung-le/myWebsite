@@ -1,29 +1,23 @@
 <template>
-	<div>
-		<div id="drawing_line" class="content scrollbar">
-			<svg class="drawing_line_svg">
-				<circle class="drawing_line_circle" cx="0" cy="0" r="4"></circle>
-				<polyline class="drawing_line_polyline" points=""></polyline>
-			</svg>
-		</div>
-		<div class="holster">
-			<div class="box-snaps-wrap">
-				<Home ref="app1" :opacity="this.opacity" />
-				<Home2 ref="app2" />
-				<Home3 ref="app3" />
-				<Home4 ref="app4" />
-			</div>
-			<Footer></Footer>
-		</div>
+	<div id="drawing_line" class="content scrollbar">
+		<svg class="drawing_line_svg">
+			<circle class="drawing_line_circle" cx="0" cy="0" r="4"></circle>
+			<polyline class="drawing_line_polyline" points=""></polyline>
+		</svg>
+		<router-view v-slot="{ Component }">
+			<transition
+				enter-active-class="animate__animated animate__fadeInRight"
+				leave-active-class="animate__animated animate__fadeOutLeft"
+				mode="out-in">
+				<component :is="Component" />
+			</transition>
+		</router-view>
+		<Footer></Footer>
 	</div>
 </template>
 
 <script>
 import Footer from '@/layout/Footer.vue'
-import Home from '@/components/Home.vue'
-import Home2 from '@/components/Home2.vue'
-import Home3 from '@/components/Home3.vue'
-import Home4 from '@/components/Home4.vue'
 
 var total = 12
 var gap = 30
@@ -32,6 +26,7 @@ var debounce_counter = 0
 
 var polyline, polyPoints, circle, circleX, circleY, circleR
 
+var points = []
 var pointer = {
 	x: window.innerWidth / 2,
 	y: window.innerHeight / 2,
@@ -51,22 +46,10 @@ var pointer = {
 	},
 }
 
-var points = []
-
 export default {
 	name: 'App',
 	components: {
 		Footer,
-		Home,
-		Home2,
-		Home3,
-		Home4,
-	},
-	data() {
-		return {
-			opacity: 0,
-			setOpacity: 0,
-		}
 	},
 	mounted() {
 		//마우스 효과
@@ -80,25 +63,6 @@ export default {
 		window.addEventListener('mousemove', this.fucMousemove)
 		window.addEventListener('mousedown', this.fucMousedown)
 		window.addEventListener('mouseup', this.fucMouseup)
-
-		this.$nextTick(() => {
-			let observer = new IntersectionObserver(e => {
-				e.forEach(div => {
-					if (div.isIntersecting) {
-						this.setOpacity = 1
-						div.target.style.opacity = this.setOpacity
-					} else {
-						this.setOpacity = 0
-						div.target.style.opacity = this.setOpacity
-					}
-					this.opacity = this.setOpacity
-				})
-			})
-			observer.observe(this.$refs.app1.$refs.target)
-			observer.observe(this.$refs.app2.$refs.target)
-			observer.observe(this.$refs.app3.$refs.target)
-			observer.observe(this.$refs.app4.$refs.target)
-		})
 	},
 	methods: {
 		drawLine() {
