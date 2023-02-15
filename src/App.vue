@@ -1,27 +1,31 @@
 <template>
-	<div id="drawing_line" class="content scrollbar">
-		<svg class="drawing_line_svg">
-			<circle class="drawing_line_circle" cx="0" cy="0" r="4"></circle>
-			<polyline class="drawing_line_polyline" points=""></polyline>
-		</svg>
-		<router-view v-slot="{ Component }">
-			<transition
-				enter-active-class="animate__animated animate__fadeInRight"
-				leave-active-class="animate__animated animate__fadeOutLeft"
-				mode="out-in">
-				<component :is="Component" />
-			</transition>
-		</router-view>
-		<Footer></Footer>
+	<div>
+		<div id="drawing_line" class="content scrollbar">
+			<svg class="drawing_line_svg">
+				<circle class="drawing_line_circle" cx="0" cy="0" r="4"></circle>
+				<polyline class="drawing_line_polyline" points=""></polyline>
+			</svg>
+		</div>
+		<div class="holster">
+			<div class="box-snaps-wrap">
+				<Home ref="app1" />
+				<Graph ref="app2" />
+				<Career ref="app3" />
+				<Contact ref="app4" :opacity="this.opacity" />
+			</div>
+		</div>
 	</div>
 </template>
 
 <script>
 import Footer from '@/layout/Footer.vue'
+import Home from '@/components/Home.vue'
+import Contact from '@/components/Contact.vue'
+import Graph from '@/components/Graph.vue'
+import Career from '@/components/Career.vue'
 
 var total = 12
 var gap = 30
-// var ease = 0.5
 var debounce_removeLine
 var debounce_counter = 0
 
@@ -52,6 +56,18 @@ export default {
 	name: 'App',
 	components: {
 		Footer,
+		Home,
+		Career,
+		Contact,
+		Graph,
+	},
+	data() {
+		return {
+			content1: '여기는 홈화면입니다~ 아뭐쓰지111',
+			content3: '여기는 홈화면입니다~ 아뭐쓰지333',
+			opacity: 0,
+			setOpacity: 0,
+		}
 	},
 	mounted() {
 		polyline = document.querySelector('.drawing_line_polyline')
@@ -64,6 +80,25 @@ export default {
 		window.addEventListener('mousemove', this.fucMousemove)
 		window.addEventListener('mousedown', this.fucMousedown)
 		window.addEventListener('mouseup', this.fucMouseup)
+
+		this.$nextTick(() => {
+			let observer = new IntersectionObserver(e => {
+				e.forEach(div => {
+					if (div.isIntersecting) {
+						this.setOpacity = 1
+						div.target.style.opacity = this.setOpacity
+					} else {
+						this.setOpacity = 0
+						div.target.style.opacity = this.setOpacity
+					}
+					this.opacity = this.setOpacity
+				})
+			})
+			observer.observe(this.$refs.app1.$refs.target)
+			observer.observe(this.$refs.app2.$refs.target)
+			observer.observe(this.$refs.app3.$refs.target)
+			observer.observe(this.$refs.app4.$refs.target)
+		})
 	},
 	methods: {
 		drawLine() {
@@ -128,6 +163,14 @@ export default {
 .content {
 	min-width: 500px;
 	position: relative;
+}
+
+.holster {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-flow: column nowrap;
 }
 
 a {

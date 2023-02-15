@@ -1,5 +1,5 @@
 <template>
-	<div class="large-font">
+	<div ref="target" class="large-font box-snaps" style="background-color: yellowgreen">
 		<TransitionGroup tag="ul" name="fade" class="container">
 			<div v-for="item in items" class="item" :key="item">
 				{{ item }}
@@ -18,6 +18,9 @@ var getInitialItems = () => [name, email, blog, createDate]
 
 export default {
 	name: 'Contact',
+	props: {
+		opacity: Number,
+	},
 	data() {
 		return {
 			items: getInitialItems(),
@@ -28,16 +31,23 @@ export default {
 			this.items = getInitialItems()
 		},
 		movedata() {
-			this.items = [blog, name, createDate, email]
+			this.items = [email, createDate, name, blog]
+		},
+		setTimeOutMove() {
+			setTimeout(() => {
+				this.movedata()
+			}, 800)
+			setTimeout(() => {
+				this.reset()
+			}, 1500)
 		},
 	},
-	mounted() {
-		setTimeout(() => {
-			this.movedata()
-		}, 800)
-		setTimeout(() => {
-			this.reset()
-		}, 1500)
+	watch: {
+		opacity() {
+			if (this.opacity == 1) {
+				this.setTimeOutMove()
+			}
+		},
 	},
 }
 </script>
@@ -46,7 +56,6 @@ export default {
 .large-font {
 	font-size: 4.5rem;
 }
-
 .container {
 	position: relative;
 	padding: 0;
