@@ -38,7 +38,7 @@ export default {
 				trigger: '.secense',
 				start: 'center center',
 				scrub: true,
-				// markers: true,
+				markers: false,
 			},
 			opacity: 1,
 		})
@@ -49,7 +49,7 @@ export default {
 				scrollTrigger: {
 					trigger: '.secense-front',
 					start: 'top center',
-					scrub: true,
+					scrub: 2,
 				},
 				text: {
 					value: this.text,
@@ -59,18 +59,31 @@ export default {
 			})
 		},
 		circleSqure() {
-			gsap.to('.a', {
-				scrollTrigger: {
-					trigger: '.a',
-					start: 'top center',
+			let tl2 = gsap.timeline().to(
+				'.a',
+				{
+					x: '+=1100',
+					yoyo: true,
+					rotation: 1080,
+					// duration: 6,
+					ease: 'back.out(1.7)',
 				},
-				x: '+=1100',
-				yoyo: true,
-				rotation: 1080,
-				repeat: -1,
-				repeatDelay: 0.3,
-				duration: 5.5,
-				ease: 'back.out(1.7)',
+				{
+					x: '-=1100',
+					yoyo: true,
+					rotation: -1080,
+					// duration: 6,
+					ease: 'back.out(1.7)',
+				}
+			)
+
+			ScrollTrigger.create({
+				animation: tl2,
+				trigger: '.a',
+				start: 'top+=100px center',
+				end: 'bottom+=360px center',
+				scrub: 5,
+				markers: true,
 			})
 		},
 	},
