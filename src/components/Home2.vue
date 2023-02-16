@@ -38,7 +38,7 @@ export default {
 				trigger: '.secense',
 				start: 'center center',
 				scrub: true,
-				markers: true,
+				// markers: true,
 			},
 			opacity: 1,
 		})
