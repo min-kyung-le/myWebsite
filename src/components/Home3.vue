@@ -1,14 +1,45 @@
 <template>
 	<div ref="target" class="box-snaps">
-		<h1>Home3</h1>
+		<ul class="list-group">
+			<div class="bg-box"></div>
+			<li class="list" v-for="m in menu" :key="m">{{ m.name }}</li>
+		</ul>
 	</div>
 </template>
 
 <script>
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { TextPlugin } from 'gsap/TextPlugin'
+
+gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(TextPlugin)
+
+let text = [{ name: 'Forma Brands' }, { name: 'Function Health' }, { name: 'Calexo' }, { name: 'HP Omen' }]
+
 export default {
 	name: 'Home3',
-	mounted() {},
+	data() {
+		return {
+			menu: text,
+			spal: [],
+		}
+	},
+	methods: {},
 }
 </script>
 
-<style></style>
+<style>
+ul.list-group {
+	padding: 0;
+}
+.list {
+	color: black;
+	background-color: #f1f1f1;
+	padding: 1px 4px;
+}
+
+.list-group .bg-box {
+	background-color: #f1f1f1;
+}
+</style>

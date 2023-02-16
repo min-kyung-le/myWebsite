@@ -27,6 +27,14 @@ import { TextPlugin } from 'gsap/TextPlugin'
 
 gsap.registerPlugin(ScrollTrigger)
 gsap.registerPlugin(TextPlugin)
+
+let tl = gsap.timeline()
+
+let text = 'Aron McGuire Design Director @2023'
+
+let innerHeight = window.innerHeight
+let onePageHeight = Math.round(innerHeight / 4)
+
 export default {
 	components: {
 		Home2,
@@ -35,45 +43,75 @@ export default {
 	},
 	data() {
 		return {
-			sentence: 'Aron McGuire Design Director @2023',
 			erasers: 4,
 		}
 	},
 	mounted() {
-		let tl = gsap.timeline()
+		for (let i = 0; i < 10; i++) {
+			this.isTyping()
+		}
+	},
+	methods: {
+		async isTyping() {
+			tl.to('.typing', {
+				text: {
+					value: text,
+					delimiter: '',
+				},
+				duration: 2.5,
+				ease: 'power1.inOut',
+			})
 
-		tl.to('.typing', {
-			trigger: '.typing',
-			text: {
-				value: this.sentence,
-				delimiter: '',
-			},
-			//repeat: -1,
-			//repeatDelay: 3,
-			duration: 3.5,
-			ease: 'power1.inOut',
-		})
+			await this.setEasersBg()
+		},
+		setEasersBg() {
+			let str = ''
+			for (let i = 1; i < 5; i++) {
+				str = '.eraser' + i
 
-		let str = ''
-		for (let i = 1; i < 5; i++) {
-			str = '.eraser' + i
-			console.log(str)
+				if (i != 0)
+					tl.set(str, {
+						y: onePageHeight * (i - 1),
+					})
 
-			if (i != 0)
-				tl.set(str, {
-					height: 180 * i,
-				})
+				tl.to(
+					str,
+					{
+						width: '100%',
+						duration: 0.35,
+						ease: 'power1.inOut',
+					},
+					'>'
+				)
+			}
 
-			tl.to(
-				str,
+			tl.from(
+				'.typing',
 				{
-					width: '100%',
-					duration: 1.5,
+					text: {
+						value: '',
+						delimiter: '',
+					},
+					duration: 0.3,
 					ease: 'power1.inOut',
 				},
 				'>'
 			)
-		}
+
+			for (let i = 4; i > 0; i--) {
+				str = '.eraser' + i
+
+				tl.to(
+					str,
+					{
+						width: '0%',
+						duration: 0.35,
+						ease: 'power1.inOut',
+					},
+					'>'
+				)
+			}
+		},
 	},
 }
 </script>
@@ -81,7 +119,7 @@ export default {
 <style>
 .home-con {
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: space-between;
 }
 .con {
 	width: 400px;
@@ -90,7 +128,7 @@ export default {
 .erasers .eraser {
 	width: 0;
 	height: 180px;
-	position: fixed;
+	position: absolute;
 	right: 0;
 	top: 0;
 	background-color: #fff;
