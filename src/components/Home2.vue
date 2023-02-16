@@ -36,9 +36,8 @@ export default {
 		tl.set('.secense-done', {
 			scrollTrigger: {
 				trigger: '.secense',
-				start: 'center center',
+				start: 'bottom+=100px center',
 				scrub: true,
-				markers: false,
 			},
 			opacity: 1,
 		})
@@ -47,8 +46,9 @@ export default {
 		isTypeing() {
 			tl.to('.secense-front', {
 				scrollTrigger: {
-					trigger: '.secense-front',
-					start: 'top center',
+					trigger: '.secense',
+					start: 'top-=90px center',
+					end: 'bottom+=100px center',
 					scrub: 2,
 				},
 				text: {
@@ -80,10 +80,9 @@ export default {
 			ScrollTrigger.create({
 				animation: tl2,
 				trigger: '.a',
-				start: 'top+=100px center',
-				end: 'bottom+=360px center',
+				start: 'top-=100px center',
+				end: 'bottom+=160px center',
 				scrub: 5,
-				markers: true,
 			})
 		},
 	},

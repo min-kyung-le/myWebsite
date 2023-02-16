@@ -7,6 +7,25 @@
 					<div class="con typing"></div>
 					<div class="con typing"></div>
 					<div v-for="idx in erasers" :class="['eraser eraser' + idx]" :key="idx"></div>
+					<div class="scroll-down-box">
+						<div class="scroll-down">SCROLL DOWN</div>
+						<div id="arrow-down" class="scroll-down">
+							<svg
+								fill="#fff"
+								enable-background="new 0 0 50 50"
+								height="20px"
+								id="arrow-down-svg"
+								version="1.1"
+								viewBox="0 0 50 50"
+								width="20px"
+								xml:space="preserve"
+								xmlns="http://www.w3.org/2000/svg"
+								xmlns:xlink="http://www.w3.org/1999/xlink">
+								<rect fill="none" height="50" width="50" />
+								<polygon points="47.25,15 45.164,12.914 25,33.078 4.836,12.914 2.75,15 25,37.25 " />
+							</svg>
+						</div>
+					</div>
 				</div>
 				<Home2 ref="app2"></Home2>
 				<Home3 ref="app3"></Home3>
@@ -47,11 +66,30 @@ export default {
 		}
 	},
 	mounted() {
-		for (let i = 0; i < 10; i++) {
-			this.isTyping()
-		}
+		// this.repeatAll(3)
+
+		tl.to('#arrow-down', {
+			y: 3.5,
+			yoyo: true,
+			repeat: -1,
+			duration: 0.3,
+			ease: 'power1.inOut',
+		})
 	},
 	methods: {
+		repeatAll(num) {
+			for (let i = 0; i < num; i++) {
+				this.isTyping()
+			}
+			tl.to('.typing', {
+				text: {
+					value: text,
+					delimiter: '',
+				},
+				duration: 2.5,
+				ease: 'power1.inOut',
+			})
+		},
 		async isTyping() {
 			tl.to('.typing', {
 				text: {
@@ -105,7 +143,7 @@ export default {
 					str,
 					{
 						width: '0%',
-						duration: 0.35,
+						duration: 0.3,
 						ease: 'power1.inOut',
 					},
 					'>'
@@ -123,7 +161,7 @@ export default {
 }
 .con {
 	width: 400px;
-	padding-top: 110px;
+	padding-top: 90px;
 }
 .erasers .eraser {
 	width: 0;
@@ -132,5 +170,17 @@ export default {
 	right: 0;
 	top: 0;
 	background-color: #fff;
+}
+.scroll-down-box {
+	font-size: medium;
+	position: fixed;
+	bottom: 10px;
+	left: 45%;
+}
+.scroll-down {
+	width: 120px;
+	padding-top: 2px;
+	text-align: center;
+	align-content: center;
 }
 </style>
