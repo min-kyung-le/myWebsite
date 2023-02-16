@@ -127,6 +127,7 @@ export default {
 .content {
 	min-width: 500px;
 	position: relative;
+	padding: 0 80px;
 }
 
 .holster {
