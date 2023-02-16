@@ -1,12 +1,21 @@
 <template>
 	<div ref="target" class="box-snaps">
 		<div class="a"></div>
-		<div class="secense">
-			Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore, placeat? Voluptate ratione corrupti
-			ipsam laborum fugit itaque nostrum debitis sint. Similique, deleniti culpa! Atque quas maxime, praesentium
-			voluptatem esse impedit!
-			<div class="secense-front"></div>
-			<div class="secense-done">{{ this.text }}</div>
+		<div class="secense" :style="setStyle">
+			<div class="secense-1">Lorem ipsum dolor sit, amet consectetur</div>
+			<div class="secense-2">adipisicing elit. Inventore, placeat?</div>
+			<div class="secense-3">Voluptate ratione corrupti ipsam laborum</div>
+			<div class="secense-4">fugit itaque nostrum debitis sint. Similique,</div>
+			<div class="secense-5">deleniti culpa! Atque quas maxime,</div>
+			<div class="secense-6">praesentium voluptatem esse impedit!</div>
+			<div class="front front-1"></div>
+			<div class="front front-2"></div>
+			<div class="front front-3"></div>
+			<div class="front front-4"></div>
+			<div class="front front-5"></div>
+			<div class="front front-6"></div>
+
+			<div class="secense-done"></div>
 		</div>
 	</div>
 </template>
@@ -20,14 +29,25 @@ gsap.registerPlugin(ScrollTrigger)
 gsap.registerPlugin(TextPlugin)
 
 let tl = gsap.timeline()
+let noPaddingInnerWidth = window.innerWidth - 160
 export default {
 	name: 'Home2',
 	data() {
 		return {
-			text: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore, placeat? Voluptate ratione corrupti
-				ipsam laborum fugit itaque nostrum debitis sint. Similique, deleniti culpa! Atque quas maxime,
-				praesentium voluptatem esse impedit!`,
+			textarea: [
+				'Lorem ipsum dolor sit, amet consectetur',
+				'adipisicing elit. Inventore, placeat?',
+				'Voluptate ratione corrupti ipsam laborum',
+				'fugit itaque nostrum debitis sint. Similique,',
+				'deleniti culpa! Atque quas maxime,',
+				'praesentium voluptatem esse impedit!',
+			],
 		}
+	},
+	computed: {
+		setStyle() {
+			return 'width: ' + noPaddingInnerWidth + 'px;'
+		},
 	},
 	mounted() {
 		this.circleSqure()
@@ -44,19 +64,29 @@ export default {
 	},
 	methods: {
 		isTypeing() {
-			tl.to('.secense-front', {
-				scrollTrigger: {
-					trigger: '.secense',
-					start: 'top-=90px center',
-					end: 'bottom+=100px center',
-					scrub: 2,
-				},
-				text: {
-					value: this.text,
-					delimiter: '',
-				},
-				ease: 'rough({ strength: 1, points: 20, template: none.out, taper: none, randomize: true, clamp: false })',
-			})
+			let i = 0
+			for (let one of this.textarea) {
+				i++
+				let triggerNm = '.secense-' + i
+				let toElement = i == 1 ? '.front-' + i : ''
+				tl.to(
+					toElement,
+					{
+						scrollTrigger: {
+							trigger: triggerNm,
+							start: 'top-=90px center',
+							end: 'bottom+=100px center',
+							scrub: 2,
+						},
+						text: {
+							value: one,
+							delimiter: '',
+						},
+						ease: 'rough({ strength: 1, points: 20, template: none.out, taper: none, randomize: true, clamp: false })',
+					},
+					'>'
+				)
+			}
 		},
 		circleSqure() {
 			let tl2 = gsap.timeline().to(
@@ -97,11 +127,28 @@ export default {
 	margin-bottom: 17px;
 	margin-left: 10px;
 }
-.secense .secense-front {
+.secense .front {
 	position: absolute;
-	top: 0;
 	color: #f1f1f1;
 	z-index: 10;
+}
+.secense .front-1 {
+	top: 0;
+}
+.secense .front-2 {
+	top: 83px;
+}
+.secense .front-3 {
+	top: 166px;
+}
+.secense .front-4 {
+	top: 249px;
+}
+.secense .front-5 {
+	top: 332px;
+}
+.secense .front-6 {
+	top: 415px;
 }
 .secense {
 	color: #474747;
