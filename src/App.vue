@@ -180,10 +180,10 @@ html {
 }
 #drawing_line > svg .drawing_line_polyline {
 	fill: none;
-	stroke: #fff;
+	stroke: #ff0000;
 	stroke-width: 2;
 }
 #drawing_line > svg .drawing_line_circle {
-	fill: #fff;
+	fill: #ff0000;
 }
 </style>

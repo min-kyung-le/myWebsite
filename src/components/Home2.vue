@@ -177,7 +177,6 @@ export default {
 .secense .front {
 	position: absolute;
 	color: #f1f1f1;
-	z-index: 10;
 }
 .secense .front-1 {
 	top: 0;

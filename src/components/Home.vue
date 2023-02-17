@@ -79,10 +79,14 @@ export default {
 	mounted() {
 		this.playAll()
 
+		tl.set('.scroll-down-box', {
+			opacity: 1,
+		})
+
 		tl.to('#arrow-down', {
 			y: 8,
 			yoyo: true,
-			repeat: 10,
+			repeat: 50,
 			duration: 0.3,
 			ease: 'power1.inOut',
 		})
@@ -206,6 +210,7 @@ export default {
 	position: fixed;
 	bottom: 10px;
 	left: 45%;
+	opacity: 0;
 }
 .scroll-down {
 	width: 120px;
