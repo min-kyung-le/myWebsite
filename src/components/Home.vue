@@ -1,8 +1,8 @@
 <template>
-	<div ref="target" class="large-font">
+	<div ref="target">
 		<div class="holster">
 			<div class="box-snaps-wrap" id="scr-t">
-				<div ref="app1" class="home-con box-snaps erasers">
+				<div ref="app1" class="large-font home-con box-snaps erasers">
 					<div class="con typing"></div>
 					<div class="con typing"></div>
 					<div class="con typing"></div>

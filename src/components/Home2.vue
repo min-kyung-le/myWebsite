@@ -2,7 +2,7 @@
 	<div ref="target" class="box-snaps">
 		<div class="a"></div>
 		<div class="secense" :style="setStyle">
-			<div class="secense-1">Lorem ipsum dolor sit, amet consectetur</div>
+			<div id="sec" class="secense-1">Lorem ipsum dolor sit, amet consectetur</div>
 			<div class="secense-2">adipisicing elit. Inventore, placeat?</div>
 			<div class="secense-3">Voluptate ratione corrupti ipsam laborum</div>
 			<div class="secense-4">fugit itaque nostrum debitis sint. Similique,</div>
@@ -49,6 +49,17 @@ export default {
 		},
 	},
 	mounted() {
+		let sec = document.getElementById('sec')
+		let fronts = document.getElementsByClassName('front')
+		let clientHeight = sec.clientHeight
+
+		let i = 0
+		for (let front of fronts) {
+			let setclientHeight = clientHeight * i
+			front.style.top = setclientHeight + 'px'
+			i++
+		}
+
 		this.circleSqure()
 		this.isTypeing()
 	},
@@ -178,27 +189,10 @@ export default {
 	position: absolute;
 	color: #f1f1f1;
 }
-.secense .front-1 {
-	top: 0;
-}
-.secense .front-2 {
-	top: 83px;
-}
-.secense .front-3 {
-	top: 166px;
-}
-.secense .front-4 {
-	top: 249px;
-}
-.secense .front-5 {
-	top: 330px;
-}
-.secense .front-6 {
-	top: 413px;
-}
 .secense {
 	color: #474747;
 	position: absolute;
+	font-size: 3rem;
 }
 
 .secense .secense-done {
