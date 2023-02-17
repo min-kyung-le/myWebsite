@@ -51,26 +51,6 @@ export default {
 	mounted() {
 		this.circleSqure()
 		this.isTypeing()
-
-		tl.to('.front', {
-			scrollTrigger: {
-				trigger: '.secense-done',
-				start: 'top bottom',
-				end: 'bottom+=100 bottom',
-				scrub: true,
-				markers: true,
-			},
-			display: 'none',
-		}).to('.secense', {
-			scrollTrigger: {
-				trigger: '.secense-done',
-				start: 'top bottom',
-				end: 'bottom+=100 bottom',
-				scrub: true,
-				markers: true,
-			},
-			color: '#fff',
-		})
 	},
 	methods: {
 		myFunc() {
