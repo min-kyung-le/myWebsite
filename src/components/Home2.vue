@@ -53,12 +53,6 @@ export default {
 		this.isTypeing()
 	},
 	methods: {
-		myFunc() {
-			let el = document.getElementsByClassName('front')
-			for (let e of el) {
-				e.classList.add('inactive')
-			}
-		},
 		isTypeing() {
 			let rough =
 				'rough({ strength: 1, points: 20, template: none.out, taper: none, randomize: true, clamp: false })'

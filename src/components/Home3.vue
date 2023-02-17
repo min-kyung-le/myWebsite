@@ -9,11 +9,9 @@
 
 <script>
 import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { TextPlugin } from 'gsap/TextPlugin'
+import { Observer } from 'gsap/Observer'
 
-gsap.registerPlugin(ScrollTrigger)
-gsap.registerPlugin(TextPlugin)
+gsap.registerPlugin(Observer)
 
 let text = [{ name: 'Forma Brands' }, { name: 'Function Health' }, { name: 'Calexo' }, { name: 'HP Omen' }]
 

@@ -7,6 +7,7 @@
 					<div class="con typing"></div>
 					<div class="con typing"></div>
 					<div v-for="idx in erasers" :class="['eraser eraser' + idx]" :key="idx"></div>
+					<div v-for="idx in erasers" :class="['eraser-black eraser-black' + idx]" :key="idx"></div>
 					<div class="scroll-down-box">
 						<div class="scroll-down">SCROLL DOWN</div>
 						<div id="arrow-down" class="scroll-down">
@@ -54,6 +55,15 @@ let text = 'Aron McGuire Design Director @2023'
 let innerHeight = window.innerHeight
 let onePageHeight = Math.round(innerHeight / 4)
 
+function repeatAll(func) {
+	return new Promise(resolve => {
+		setTimeout(() => {
+			func
+			resolve()
+		}, 0)
+	})
+}
+
 export default {
 	components: {
 		Home2,
@@ -66,89 +76,91 @@ export default {
 		}
 	},
 	mounted() {
-		// this.repeatAll(3)
+		repeatAll(this.isTypingWhite())
+			.then(() => repeatAll(this.setEasersWhite()))
+			.then(() => repeatAll(this.isTypingBlack()))
+			.then(() => repeatAll(this.setEsaserBlack()))
+			.then(() => repeatAll(this.isTypingWhite()))
 
 		tl.to('#arrow-down', {
 			y: 3.5,
 			yoyo: true,
-			repeat: -1,
+			repeat: 10,
 			duration: 0.3,
 			ease: 'power1.inOut',
 		})
 	},
 	methods: {
-		repeatAll(num) {
-			for (let i = 0; i < num; i++) {
-				this.isTyping()
-			}
+		isTypingWhite() {
 			tl.to('.typing', {
 				text: {
 					value: text,
 					delimiter: '',
 				},
+				color: '#fff',
 				duration: 2.5,
 				ease: 'power1.inOut',
 			})
 		},
-		async isTyping() {
+		isTypingBlack() {
 			tl.to('.typing', {
 				text: {
 					value: text,
 					delimiter: '',
 				},
+				color: '#000',
 				duration: 2.5,
 				ease: 'power1.inOut',
 			})
+		},
+		setEsaserBlack() {
+			let str = ''
+			// 검정 지우개
+			for (let i = 1; i < 5; i++) {
+				str = '.eraser-black' + i
 
-			await this.setEasersBg()
+				tl.set(str, {
+					y: onePageHeight * (i - 1),
+				})
+				tl.to(str, {
+					width: '100%',
+					duration: 0.35,
+					ease: 'power1.inOut',
+				})
+			}
+			tl.from('.typing', {
+				text: {
+					value: '',
+					delimiter: '',
+				},
+				duration: 0.3,
+				ease: 'power1.inOut',
+			})
 		},
-		setEasersBg() {
+		setEasersWhite() {
 			let str = ''
 			for (let i = 1; i < 5; i++) {
 				str = '.eraser' + i
 
-				if (i != 0)
-					tl.set(str, {
-						y: onePageHeight * (i - 1),
-					})
+				tl.set(str, {
+					backgroundColor: '#fff',
+					y: onePageHeight * (i - 1),
+				})
 
-				tl.to(
-					str,
-					{
-						width: '100%',
-						duration: 0.35,
-						ease: 'power1.inOut',
-					},
-					'>'
-				)
-			}
-
-			tl.from(
-				'.typing',
-				{
-					text: {
-						value: '',
-						delimiter: '',
-					},
-					duration: 0.3,
+				tl.to(str, {
+					width: '100%',
+					duration: 0.35,
 					ease: 'power1.inOut',
-				},
-				'>'
-			)
-
-			for (let i = 4; i > 0; i--) {
-				str = '.eraser' + i
-
-				tl.to(
-					str,
-					{
-						width: '0%',
-						duration: 0.3,
-						ease: 'power1.inOut',
-					},
-					'>'
-				)
+				})
 			}
+			tl.from('.typing', {
+				text: {
+					value: '',
+					delimiter: '',
+				},
+				duration: 0.3,
+				ease: 'power1.inOut',
+			})
 		},
 	},
 }
@@ -162,6 +174,7 @@ export default {
 .con {
 	width: 400px;
 	padding-top: 90px;
+	z-index: 2;
 }
 .erasers .eraser {
 	width: 0;
@@ -170,6 +183,14 @@ export default {
 	right: 0;
 	top: 0;
 	background-color: #fff;
+}
+.erasers .eraser-black {
+	width: 0;
+	height: 180px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	background-color: #000;
 }
 .scroll-down-box {
 	font-size: medium;
