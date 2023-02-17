@@ -66,89 +66,98 @@ export default {
 				start: 'bottom+=100px center',
 				scrub: true,
 			},
-			opacity: 1,
+			display: 'block',
 		})
 	},
 	methods: {
 		isTypeing() {
+			let rough =
+				'rough({ strength: 1, points: 20, template: none.out, taper: none, randomize: true, clamp: false })'
 			tl.to('.front-1', {
 				scrollTrigger: {
 					trigger: '.secense-1',
-					start: 'top-=90px center',
-					end: 'bottom+=100px center',
+					start: 'top-=10px center',
+					end: 'bottom+=150px center',
 					scrub: 2,
 				},
 				text: {
 					value: this.textarea[0],
 					delimiter: '',
 				},
-				ease: 'rough({ strength: 1, points: 20, template: none.out, taper: none, randomize: true, clamp: false })',
+				ease: rough,
 			})
 				.to('.front-2', {
 					scrollTrigger: {
 						trigger: '.secense-2',
 						start: 'bottom center',
-						end: 'bottom+=200px center',
+						end: 'bottom+=20px center',
 						scrub: 2,
 					},
 					text: {
 						value: this.textarea[1],
 						delimiter: '',
 					},
-					ease: 'rough({ strength: 1, points: 20, template: none.out, taper: none, randomize: true, clamp: false })',
+					ease: rough,
 				})
 				.to('.front-3', {
 					scrollTrigger: {
 						trigger: '.secense-3',
-						start: 'top-=90px center',
-						end: 'bottom+=80px center',
+						start: 'top bottom',
+						end: 'bottom+=20px center',
 						scrub: 2,
 					},
 					text: {
 						value: this.textarea[2],
 						delimiter: '',
 					},
-					ease: 'rough({ strength: 1, points: 20, template: none.out, taper: none, randomize: true, clamp: false })',
+					ease: rough,
 				})
 				.to('.front-4', {
 					scrollTrigger: {
 						trigger: '.secense-4',
-						start: 'top-=90px center',
-						end: 'bottom+=80px center',
+						start: 'top bottom',
+						end: 'bottom+=30px bottom',
 						scrub: 2,
 					},
 					text: {
 						value: this.textarea[3],
 						delimiter: '',
 					},
-					ease: 'rough({ strength: 1, points: 20, template: none.out, taper: none, randomize: true, clamp: false })',
+					ease: rough,
 				})
 				.to('.front-5', {
 					scrollTrigger: {
 						trigger: '.secense-5',
-						start: 'top-=90px center',
-						end: 'bottom+=80px center',
+						start: 'top bottom',
+						end: 'bottom+=40px bottom',
 						scrub: 2,
 					},
 					text: {
 						value: this.textarea[4],
 						delimiter: '',
 					},
-					ease: 'rough({ strength: 1, points: 20, template: none.out, taper: none, randomize: true, clamp: false })',
+					ease: rough,
 				})
 				.to('.front-6', {
 					scrollTrigger: {
-						trigger: '.secense-6',
-						start: 'top-=90px center',
-						end: 'bottom+=80px center',
+						trigger: '.secense-5',
+						start: 'top bottom',
+						end: 'bottom center',
 						scrub: 2,
 					},
 					text: {
 						value: this.textarea[5],
 						delimiter: '',
 					},
-					ease: 'rough({ strength: 1, points: 20, template: none.out, taper: none, randomize: true, clamp: false })',
+					ease: rough,
+					onComplete: this.myFunc,
 				})
+		},
+		myFunc() {
+			let el = document.getElementsByClassName('front')
+			for (let e of el) {
+				e.classList.add('inactive')
+			}
 		},
 		circleSqure() {
 			let tl2 = gsap.timeline().to(
@@ -207,10 +216,10 @@ export default {
 	top: 249px;
 }
 .secense .front-5 {
-	top: 331px;
+	top: 330px;
 }
 .secense .front-6 {
-	top: 414px;
+	top: 413px;
 }
 .secense {
 	color: #474747;
@@ -227,5 +236,9 @@ export default {
 
 .color-white {
 	color: #f1f1f1 !important;
+}
+
+.inactive {
+	display: none;
 }
 </style>
