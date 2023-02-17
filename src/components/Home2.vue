@@ -14,15 +14,7 @@
 			<div class="front front-4"></div>
 			<div class="front front-5"></div>
 			<div class="front front-6"></div>
-
-			<div class="secense-done">
-				Lorem ipsum dolor sit, amet consectetur<br />
-				adipisicing elit. Inventore, placeat?<br />
-				Voluptate ratione corrupti ipsam laborum<br />
-				fugit itaque nostrum debitis sint. Similique,<br />
-				deleniti culpa! Atque quas maxime,<br />
-				praesentium voluptatem esse impedit!<br />
-			</div>
+			<div class="secense-done"></div>
 		</div>
 	</div>
 </template>
@@ -60,24 +52,41 @@ export default {
 		this.circleSqure()
 		this.isTypeing()
 
-		tl.set('.secense-done', {
+		tl.to('.front', {
 			scrollTrigger: {
-				trigger: '.secense',
-				start: 'bottom+=100px center',
+				trigger: '.secense-done',
+				start: 'top bottom',
+				end: 'bottom+=100 bottom',
 				scrub: true,
+				markers: true,
 			},
-			display: 'block',
+			display: 'none',
+		}).to('.secense', {
+			scrollTrigger: {
+				trigger: '.secense-done',
+				start: 'top bottom',
+				end: 'bottom+=100 bottom',
+				scrub: true,
+				markers: true,
+			},
+			color: '#fff',
 		})
 	},
 	methods: {
+		myFunc() {
+			let el = document.getElementsByClassName('front')
+			for (let e of el) {
+				e.classList.add('inactive')
+			}
+		},
 		isTypeing() {
 			let rough =
 				'rough({ strength: 1, points: 20, template: none.out, taper: none, randomize: true, clamp: false })'
 			tl.to('.front-1', {
 				scrollTrigger: {
 					trigger: '.secense-1',
-					start: 'top-=10px center',
-					end: 'bottom+=150px center',
+					start: 'center bottom-=40',
+					end: 'bottom center',
 					scrub: 2,
 				},
 				text: {
@@ -89,8 +98,8 @@ export default {
 				.to('.front-2', {
 					scrollTrigger: {
 						trigger: '.secense-2',
-						start: 'bottom center',
-						end: 'bottom+=20px center',
+						start: 'center bottom-=60',
+						end: 'bottom center',
 						scrub: 2,
 					},
 					text: {
@@ -103,7 +112,7 @@ export default {
 					scrollTrigger: {
 						trigger: '.secense-3',
 						start: 'top bottom',
-						end: 'bottom+=20px center',
+						end: 'center center',
 						scrub: 2,
 					},
 					text: {
@@ -116,7 +125,7 @@ export default {
 					scrollTrigger: {
 						trigger: '.secense-4',
 						start: 'top bottom',
-						end: 'bottom+=30px bottom',
+						end: 'top center+=60',
 						scrub: 2,
 					},
 					text: {
@@ -128,8 +137,8 @@ export default {
 				.to('.front-5', {
 					scrollTrigger: {
 						trigger: '.secense-5',
-						start: 'top bottom',
-						end: 'bottom+=40px bottom',
+						start: 'top bottom-=40',
+						end: 'center bottom',
 						scrub: 2,
 					},
 					text: {
@@ -140,9 +149,9 @@ export default {
 				})
 				.to('.front-6', {
 					scrollTrigger: {
-						trigger: '.secense-5',
-						start: 'top bottom',
-						end: 'bottom center',
+						trigger: '.secense-6',
+						start: 'top bottom-=40',
+						end: 'bottom bottom',
 						scrub: 2,
 					},
 					text: {
@@ -150,14 +159,7 @@ export default {
 						delimiter: '',
 					},
 					ease: rough,
-					onComplete: this.myFunc,
 				})
-		},
-		myFunc() {
-			let el = document.getElementsByClassName('front')
-			for (let e of el) {
-				e.classList.add('inactive')
-			}
 		},
 		circleSqure() {
 			let tl2 = gsap.timeline().to(
@@ -227,8 +229,6 @@ export default {
 }
 
 .secense .secense-done {
-	position: absolute;
-	top: 0;
 	color: #f1f1f1;
 	z-index: 11;
 	opacity: 0;
