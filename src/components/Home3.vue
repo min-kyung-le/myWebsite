@@ -1,6 +1,11 @@
 <template>
-	<div ref="target" class="box-snaps">
-		<div :id="['list' + (idx + 1)]" :class="['list list' + (idx + 1)]" v-for="(m, idx) of menu" :key="m">
+	<div ref="target" class="box-snaps home-3">
+		<div
+			href="name-box"
+			:id="['list' + (idx + 1)]"
+			:class="['list list' + (idx + 1)]"
+			v-for="(m, idx) of menu"
+			:key="m">
 			<svg
 				class="arrow-right-black-svg"
 				width="15%"
@@ -35,7 +40,6 @@
 </template>
 
 <script>
-import { gsap } from 'gsap'
 let text = [{ name: 'Forma Brands' }, { name: 'Function Health' }, { name: 'Calexo' }, { name: 'HP Omen' }]
 
 export default {
@@ -47,34 +51,24 @@ export default {
 		}
 	},
 	mounted() {
-		this.$nextTick(() => {
-			gsap.set(['.name-box', '.arrow-right-black'], {
-				x: -200,
-			})
-		})
+		this.setWidthBox()
 	},
-
-	// 		let lists = document.getElementsByClassName('list')
-	// 		for (let i = 1; i <= lists.length; i++) {
-	// 			let targets = ['.name-box' + i, '.arrow-right-black' + i]
-	// 			lists[i].addEventListener('mouseover', () => {
-	// 				tl.to(targets, {
-	// 					x: 200,
-	// 				})
-	// 			})
-	// 			lists[i].addEventListener('mouseleave', () => {
-	// 				tl.to(targets, {
-	// 					x: -200,
-	// 				})
-	// 			})
-	// 		}
-	// 	})
-	// },
+	methods: {
+		setWidthBox() {
+			// padding-left 80, padding-right 80
+			let setWidth = window.innerWidth - 160
+			let boxs = document.getElementsByClassName('name-box')
+			for (let box of boxs) {
+				box.style.width = (setWidth / 5) * 3 + 'px'
+			}
+		},
+	},
 }
 </script>
 
 <style>
 .list {
+	font-size: 3.2rem;
 	color: #f1f1f1;
 	background-color: #242424;
 	padding: 1px 4px 2px 4px;
@@ -82,22 +76,51 @@ export default {
 	margin-bottom: 10px;
 }
 
+.name-box {
+	display: inline-block;
+	position: absolute;
+	left: 70px;
+	padding-top: 28px;
+	height: 80px;
+}
+.name-box:hover {
+	animation-name: boxmove;
+	animation-duration: 500ms;
+	animation-fill-mode: forwards;
+}
+
+.name-box:before {
+	animation-name: boxmoveback;
+	animation-duration: 500ms;
+	animation-fill-mode: forwards;
+}
+
 .list:hover {
 	background-color: #f1f1f1;
 	color: #242424;
 	transition: 0.2s ease-in-out;
-	animation-name: arrowright;
-	animation-duration: 2s;
-	animation-duration: leaner;
-	animation-iteration-count: 3;
-	animation-direction: alternate;
-	animation-fill-mode: forwards;
-}
-.name-box {
-	display: inline-block;
+	animation-iteration-count: 1;
 }
 
-@keyframes arrowright {
+@keyframes boxmoveback {
+	0% {
+		left: 300px;
+	}
+	100% {
+		left: 100px;
+	}
+}
+
+@-webkit-keyframes boxmoveback {
+	0% {
+		left: 300px;
+	}
+	100% {
+		left: 100px;
+	}
+}
+
+@keyframes boxmove {
 	0% {
 		left: 100px;
 	}
@@ -106,12 +129,17 @@ export default {
 	}
 }
 
-@-webkit-keyframes arrowright {
+@-webkit-keyframes jaehee {
 	0% {
 		left: 100px;
 	}
 	100% {
 		left: 300px;
 	}
+}
+
+.home-3 {
+	display: flex;
+	flex-direction: column;
 }
 </style>
