@@ -54,6 +54,7 @@ let text = 'Aron McGuire Design Director @2023'
 
 let innerHeight = window.innerHeight
 let onePageHeight = Math.round(innerHeight / 4)
+let isPlaying = 0
 
 function repeatAll(func) {
 	return new Promise(resolve => {
@@ -63,7 +64,6 @@ function repeatAll(func) {
 		}, 0)
 	})
 }
-
 export default {
 	components: {
 		Home2,
@@ -76,14 +76,10 @@ export default {
 		}
 	},
 	mounted() {
-		repeatAll(this.isTypingWhite())
-			.then(() => repeatAll(this.setEasersWhite()))
-			.then(() => repeatAll(this.isTypingBlack()))
-			.then(() => repeatAll(this.setEsaserBlack()))
-			.then(() => repeatAll(this.isTypingWhite()))
+		this.playAll()
 
 		tl.to('#arrow-down', {
-			y: 3.5,
+			y: 8,
 			yoyo: true,
 			repeat: 10,
 			duration: 0.3,
@@ -91,8 +87,20 @@ export default {
 		})
 	},
 	methods: {
+		playWhite() {
+			this.isTypingWhite().eventCallback('onComplete', this.setEasersWhite())
+		},
+		playBlack() {
+			this.isTypingBlack().eventCallback('onComplete', this.setEsaserBlack())
+		},
+		playAll() {
+			repeatAll(this.playWhite())
+				.then(this.playBlack())
+				.then(this.isTypingWhite())
+				.then(() => (isPlaying = 0))
+		},
 		isTypingWhite() {
-			tl.to('.typing', {
+			let result = tl.to('.typing', {
 				text: {
 					value: text,
 					delimiter: '',
@@ -101,9 +109,10 @@ export default {
 				duration: 2.5,
 				ease: 'power1.inOut',
 			})
+			return result
 		},
 		isTypingBlack() {
-			tl.to('.typing', {
+			let result = tl.to('.typing', {
 				text: {
 					value: text,
 					delimiter: '',
@@ -112,6 +121,7 @@ export default {
 				duration: 2.5,
 				ease: 'power1.inOut',
 			})
+			return result
 		},
 		setEsaserBlack() {
 			let str = ''
@@ -128,11 +138,12 @@ export default {
 					ease: 'power1.inOut',
 				})
 			}
-			tl.from('.typing', {
+			tl.set('.typing', {
 				text: {
 					value: '',
 					delimiter: '',
 				},
+				color: '#fff',
 				duration: 0.3,
 				ease: 'power1.inOut',
 			})
@@ -143,7 +154,6 @@ export default {
 				str = '.eraser' + i
 
 				tl.set(str, {
-					backgroundColor: '#fff',
 					y: onePageHeight * (i - 1),
 				})
 
@@ -153,11 +163,12 @@ export default {
 					ease: 'power1.inOut',
 				})
 			}
-			tl.from('.typing', {
+			tl.set('.typing', {
 				text: {
 					value: '',
 					delimiter: '',
 				},
+				color: '#000',
 				duration: 0.3,
 				ease: 'power1.inOut',
 			})
