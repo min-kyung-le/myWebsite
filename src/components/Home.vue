@@ -54,7 +54,8 @@ let text = 'Aron McGuire Design Director @2023'
 
 let innerHeight = window.innerHeight
 let onePageHeight = Math.round(innerHeight / 4)
-let isPlaying = 0
+let white = '#f1f1f1'
+let black = '#242424'
 
 function repeatAll(func) {
 	return new Promise(resolve => {
@@ -94,10 +95,7 @@ export default {
 			this.isTypingBlack().eventCallback('onComplete', this.setEsaserBlack())
 		},
 		playAll() {
-			repeatAll(this.playWhite())
-				.then(this.playBlack())
-				.then(this.isTypingWhite())
-				.then(() => (isPlaying = 0))
+			repeatAll(this.playWhite()).then(this.playBlack()).then(this.isTypingWhite())
 		},
 		isTypingWhite() {
 			let result = tl.to('.typing', {
@@ -105,7 +103,7 @@ export default {
 					value: text,
 					delimiter: '',
 				},
-				color: '#fff',
+				color: white,
 				duration: 2.5,
 				ease: 'power1.inOut',
 			})
@@ -117,7 +115,7 @@ export default {
 					value: text,
 					delimiter: '',
 				},
-				color: '#000',
+				color: black,
 				duration: 2.5,
 				ease: 'power1.inOut',
 			})
@@ -143,7 +141,7 @@ export default {
 					value: '',
 					delimiter: '',
 				},
-				color: '#fff',
+				color: white,
 				duration: 0.3,
 				ease: 'power1.inOut',
 			})
@@ -168,7 +166,7 @@ export default {
 					value: '',
 					delimiter: '',
 				},
-				color: '#000',
+				color: black,
 				duration: 0.3,
 				ease: 'power1.inOut',
 			})
@@ -193,7 +191,7 @@ export default {
 	position: absolute;
 	right: 0;
 	top: 0;
-	background-color: #fff;
+	background-color: #f1f1f1;
 }
 .erasers .eraser-black {
 	width: 0;
@@ -201,7 +199,7 @@ export default {
 	position: absolute;
 	right: 0;
 	top: 0;
-	background-color: #000;
+	background-color: #242424;
 }
 .scroll-down-box {
 	font-size: medium;
