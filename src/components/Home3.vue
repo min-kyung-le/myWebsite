@@ -1,36 +1,30 @@
 <template>
 	<div ref="target" id="home3" class="box-snaps home-3">
-		<div
-			href="name-box"
-			:id="['list' + (idx + 1)]"
-			:class="['list list' + (idx + 1)]"
-			v-for="(m, idx) of menu"
-			:key="m">
+		<div :id="['list' + (idx + 1)]" :class="['list list' + (idx + 1)]" v-for="(m, idx) of menu" :key="m">
 			<svg
-				class="arrow-right-black-svg"
 				width="15%"
 				height="100%"
-				viewBox="0 0 94 60"
+				viewBox="155 -10 94 60"
 				fill="none"
 				xmlns="http://www.w3.org/2000/svg"
 				style="opacity: 1">
-				<g clip-path="url(#clip0_651_11245)">
+				<g clip-path="url(#clip0_651_11245)" :class="['arrow-right-black-svg' + (idx + 1)]">
 					<path
 						d="M0.5 29.5H94L81 17"
 						class="arrow-right-black"
-						stroke="#111013"
+						stroke="#242424"
 						stroke-linecap="round"
 						stroke-linejoin="round"></path>
 					<path
 						d="M0.5 29.5H94L81 42"
 						class="arrow-right-black"
-						stroke="#111013"
+						stroke="#242424"
 						stroke-linecap="round"
 						stroke-linejoin="round"></path>
 				</g>
 				<defs>
 					<clipPath id="clip0_651_11245">
-						<rect class="arrow-right-black" width="94" height="60" fill="#111013"></rect>
+						<rect class="arrow-right-black" width="94" height="60" fill="#242424"></rect>
 					</clipPath>
 				</defs>
 			</svg>
@@ -44,6 +38,8 @@ let text = [{ name: 'Forma Brands' }, { name: 'Function Health' }, { name: 'Cale
 
 import { gsap } from 'gsap'
 let tl = gsap.timeline()
+let moveDelay
+let moveOver
 export default {
 	name: 'Home3',
 	data() {
@@ -54,27 +50,47 @@ export default {
 	},
 	mounted() {
 		let thisId = ''
+		moveDelay = 1.5
 		document.getElementById('home3').addEventListener('mouseover', e => {
 			thisId = e.target.id
-
 			if (thisId.indexOf('list') != -1) {
-				tl.to('.name-box' + thisId.charAt(thisId.length - 1), {
-					x: 100,
-					duration: 0.2,
-					ease: 'power1.inOut',
-				})
+				tl.to(
+					[
+						'.name-box' + thisId.charAt(thisId.length - 1),
+						'.arrow-right-black-svg' + thisId.charAt(thisId.length - 1),
+					],
+					{
+						x: 125,
+						duration: 0.2,
+						ease: 'power3.easeInOut',
+					}
+				)
+				moveDelay = 0
+				moveOver = 1
 			}
 		})
 		document.getElementById('home3').addEventListener('mouseout', e => {
 			thisId = e.target.id
-			console.log(thisId)
 
 			if (thisId.indexOf('list') != -1) {
-				tl.to('.name-box' + thisId.charAt(thisId.length - 1), {
-					x: 0,
-					duration: 0.2,
-					ease: 'power1.inOut',
-				})
+				tl.to(
+					[
+						'.name-box' + thisId.charAt(thisId.length - 1),
+						'.arrow-right-black-svg' + thisId.charAt(thisId.length - 1),
+					],
+					{
+						x: 0,
+						duration: 0.2,
+						ease: 'power2.easeInOut',
+						overwrite: true,
+						onComplete: () => {
+							if (moveOver === 1) {
+								moveDelay = 1.5
+								moveOver = null
+							}
+						},
+					}
+				)
 			}
 		})
 	},
@@ -95,8 +111,7 @@ export default {
 .list {
 	font-size: 3.2rem;
 	color: #f1f1f1;
-	/* background-color: #242424; */
-	background-color: yellow;
+	background-color: #242424;
 	padding: 1px 4px 2px 4px;
 	height: 80px;
 	margin-bottom: 10px;
