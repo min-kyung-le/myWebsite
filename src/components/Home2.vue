@@ -1,5 +1,5 @@
 <template>
-	<div ref="target" class="box-snaps">
+	<div ref="target" class="box-snaps holster-in-box">
 		<div class="a"></div>
 		<div class="secense" :style="setStyle">
 			<div id="sec" class="secense-1">Lorem ipsum dolor sit, amet consectetur</div>

@@ -1,5 +1,5 @@
 <template>
-	<div ref="target" id="home3" class="box-snaps home-3">
+	<div ref="target" id="home3" class="box-snaps home-3 holster-in-box">
 		<div :id="['list' + (idx + 1)]" :class="['list list' + (idx + 1)]" v-for="(m, idx) of menu" :key="m">
 			<svg
 				:class="['arrow-right-black-svg' + (idx + 1)]"

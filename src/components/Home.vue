@@ -2,7 +2,7 @@
 	<div ref="target">
 		<div class="holster">
 			<div class="box-snaps-wrap" id="scr-t">
-				<div ref="app1" class="large-font home-con box-snaps erasers">
+				<div ref="app1" class="large-font home-con box-snaps erasers holster-in-box">
 					<div class="con typing"></div>
 					<div class="con typing"></div>
 					<div class="con typing"></div>
@@ -30,7 +30,7 @@
 				</div>
 				<Home2 ref="app2"></Home2>
 				<Home3 ref="app3"></Home3>
-				<!--<Home4 ref="app4"></Home4> -->
+				<Home4 ref="app4"></Home4>
 			</div>
 		</div>
 	</div>
