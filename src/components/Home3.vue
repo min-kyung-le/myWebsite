@@ -60,7 +60,6 @@ export default {
 					end: 'top center',
 					ease: 'power2.easeInOut',
 					toggleActions: 'restart none resume reset',
-					markers: true,
 				},
 				delay: 0.2,
 				y: -20,
