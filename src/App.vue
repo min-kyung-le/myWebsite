@@ -139,16 +139,10 @@ export default {
 
 a {
 	font-weight: lighter;
-	color: #d3d3d3;
+	color: #f1f1f1;
 	text-decoration: none;
 	margin-right: 1.4em;
 }
-
-a:hover,
-a.router-link-active {
-	border-bottom: 2px solid #d3d3d3;
-}
-
 .fade-enter-from,
 .fade-leave-to {
 	opacity: 0;

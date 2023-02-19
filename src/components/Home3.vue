@@ -1,6 +1,11 @@
 <template>
 	<div ref="target" id="home3" class="box-snaps home-3 holster-in-box">
-		<div :id="['list' + (idx + 1)]" :class="['list list' + (idx + 1)]" v-for="(m, idx) of menus" :key="m">
+		<div
+			v-for="(m, idx) of menus"
+			:key="m.link"
+			:id="['list' + (idx + 1)]"
+			:class="['list list' + (idx + 1)]"
+			@click="goPage(m.link)">
 			<svg
 				:class="['arrow-right-black-svg' + (idx + 1)]"
 				width="0"
@@ -44,7 +49,12 @@ export default {
 	name: 'Home3',
 	data() {
 		return {
-			menus: [{ name: 'HOME' }, { name: 'GRAPH' }, { name: 'CARRER' }, { name: 'CONTACT' }],
+			menus: [
+				{ name: 'HOME', link: '/' },
+				{ name: 'GRAPH', link: '/graph' },
+				{ name: 'CAREER', link: '/career' },
+				{ name: 'CONTACT', link: '/contact' },
+			],
 		}
 	},
 	mounted() {
@@ -52,6 +62,9 @@ export default {
 		this.hoverEffect()
 	},
 	methods: {
+		goPage(link) {
+			this.$router.push(link)
+		},
 		slideEffect() {
 			for (let n = 1; n <= this.menus.length; n++) {
 				gsap.to('.list' + n, {
