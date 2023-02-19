@@ -1,6 +1,6 @@
 <template>
 	<div ref="target" id="home3" class="box-snaps home-3 holster-in-box">
-		<div :id="['list' + (idx + 1)]" :class="['list list' + (idx + 1)]" v-for="(m, idx) of menu" :key="m">
+		<div :id="['list' + (idx + 1)]" :class="['list list' + (idx + 1)]" v-for="(m, idx) of menus" :key="m">
 			<svg
 				:class="['arrow-right-black-svg' + (idx + 1)]"
 				width="0"
@@ -35,24 +35,43 @@
 </template>
 
 <script>
-let text = [{ name: 'Forma Brands' }, { name: 'Function Health' }, { name: 'Calexo' }, { name: 'HP Omen' }]
-
 import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 let tl = gsap.timeline()
+gsap.registerPlugin(ScrollTrigger)
 let moveOver
 export default {
 	name: 'Home3',
 	data() {
 		return {
-			menu: text,
-			spal: [],
+			menus: [{ name: 'HOME' }, { name: 'GRAPH' }, { name: 'CARRER' }, { name: 'CONTACT' }],
 		}
 	},
 	mounted() {
-		this.menuEffect()
+		//this.slideEffect()
+		this.hoverEffect()
+		for (let n = 1; n <= this.menus.length; n++) {
+			console.log('.list' + n)
+			gsap.to('.list' + n, {
+				scrollTrigger: {
+					trigger: '.home-3',
+					start: 'top' + '+=' + n * 75 + ' center',
+					endTrigger: '.home-3',
+					end: 'top center',
+					ease: 'power2.easeInOut',
+					toggleActions: 'restart none resume reset',
+					markers: true,
+				},
+				delay: 0.2,
+				y: -20,
+				duration: 0.5,
+				opacity: 1,
+			})
+		}
 	},
 	methods: {
-		menuEffect() {
+		slideEffect() {},
+		hoverEffect() {
 			let thisId = ''
 			document.getElementById('home3').addEventListener('mouseover', e => {
 				thisId = e.target.id
@@ -103,25 +122,8 @@ export default {
 	padding: 8px 4px 5px 4px;
 	height: 80px;
 	border-bottom: solid 1px #f1f1f1;
-}
-
-.name-box-old {
-	display: inline-block;
-	position: absolute;
-	left: 70px;
-	padding-top: 28px;
-	height: 80px;
-}
-.name-box-old:hover {
-	animation-name: boxmove;
-	animation-duration: 500ms;
-	animation-fill-mode: forwards;
-}
-
-.name-box-old:before {
-	animation-name: boxmoveback;
-	animation-duration: 500ms;
-	animation-fill-mode: forwards;
+	opacity: 0;
+	transform: translateY(20px);
 }
 
 .list:hover {
@@ -131,44 +133,9 @@ export default {
 	animation-iteration-count: 1;
 }
 
-@keyframes boxmoveback {
-	0% {
-		left: 300px;
-	}
-	100% {
-		left: 100px;
-	}
-}
-
-@-webkit-keyframes boxmoveback {
-	0% {
-		left: 300px;
-	}
-	100% {
-		left: 100px;
-	}
-}
-
-@keyframes boxmove {
-	0% {
-		left: 100px;
-	}
-	100% {
-		left: 300px;
-	}
-}
-
-@-webkit-keyframes jaehee {
-	0% {
-		left: 100px;
-	}
-	100% {
-		left: 300px;
-	}
-}
-
 .home-3 {
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 }
 </style>

@@ -29,7 +29,7 @@
 					</div>
 				</div>
 				<Home2 ref="app2"></Home2>
-				<!-- <Home3 ref="app3"></Home3> -->
+				<Home3 ref="app3"></Home3>
 			</div>
 		</div>
 	</div>
@@ -41,10 +41,8 @@ import Home3 from '@/components/Home3.vue'
 import Home4 from '@/components/Home4.vue'
 
 import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { TextPlugin } from 'gsap/TextPlugin'
 
-gsap.registerPlugin(ScrollTrigger)
 gsap.registerPlugin(TextPlugin)
 
 let tl = gsap.timeline()
