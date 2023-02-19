@@ -48,28 +48,28 @@ export default {
 		}
 	},
 	mounted() {
-		//this.slideEffect()
+		this.slideEffect()
 		this.hoverEffect()
-		for (let n = 1; n <= this.menus.length; n++) {
-			console.log('.list' + n)
-			gsap.to('.list' + n, {
-				scrollTrigger: {
-					trigger: '.home-3',
-					start: 'top' + '+=' + n * 75 + ' center',
-					endTrigger: '.home-3',
-					end: 'top center',
-					ease: 'power2.easeInOut',
-					toggleActions: 'restart none resume reset',
-				},
-				delay: 0.2,
-				y: -20,
-				duration: 0.5,
-				opacity: 1,
-			})
-		}
 	},
 	methods: {
-		slideEffect() {},
+		slideEffect() {
+			for (let n = 1; n <= this.menus.length; n++) {
+				gsap.to('.list' + n, {
+					scrollTrigger: {
+						trigger: '.home-3',
+						start: 'top' + '+=' + n * 75 + ' center',
+						endTrigger: '.home-3',
+						end: 'top center',
+						ease: 'power2.easeInOut',
+						toggleActions: 'restart none resume reset',
+					},
+					delay: 0.2,
+					y: -20,
+					duration: 0.5,
+					opacity: 1,
+				})
+			}
+		},
 		hoverEffect() {
 			let thisId = ''
 			document.getElementById('home3').addEventListener('mouseover', e => {

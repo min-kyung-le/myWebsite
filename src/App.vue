@@ -4,7 +4,7 @@
 			<circle class="drawing_line_circle" cx="0" cy="0" r="4"></circle>
 			<polyline class="drawing_line_polyline" points=""></polyline>
 		</svg>
-		<Footer></Footer>
+		<!-- <Footer></Footer> -->
 		<router-view v-slot="{ Component, route }">
 			<transition
 				:enter-active-class="route.meta.enterClass"
