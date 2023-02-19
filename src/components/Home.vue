@@ -29,8 +29,7 @@
 					</div>
 				</div>
 				<Home2 ref="app2"></Home2>
-				<Home3 ref="app3"></Home3>
-				<Home4 ref="app4"></Home4>
+				<!-- <Home3 ref="app3"></Home3> -->
 			</div>
 		</div>
 	</div>
