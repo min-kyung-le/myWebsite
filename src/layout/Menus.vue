@@ -1,5 +1,5 @@
 <template>
-	<div class="footerbg">
+	<div class="menusbg">
 		<ul>
 			<li><router-link to="/">HOME</router-link></li>
 			<li><router-link to="/graph">GRAPH</router-link></li>
@@ -11,7 +11,7 @@
 
 <script>
 export default {
-	name: 'Footer',
+	name: 'Menus',
 }
 </script>
 

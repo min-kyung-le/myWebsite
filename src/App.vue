@@ -4,21 +4,13 @@
 			<circle class="drawing_line_circle" cx="0" cy="0" r="4"></circle>
 			<polyline class="drawing_line_polyline" points=""></polyline>
 		</svg>
-		<!-- <Footer></Footer> -->
-		<router-view v-slot="{ Component, route }">
-			<transition
-				:enter-active-class="route.meta.enterClass"
-				:leave-active-class="route.meta.leaveClass"
-				mode="out-in">
-				<component :is="Component" />
-			</transition>
+		<router-view v-slot="{ Component }">
+			<component :is="Component" />
 		</router-view>
 	</div>
 </template>
 
 <script>
-import Footer from '@/layout/Footer.vue'
-
 var total = 12
 var gap = 30
 var debounce_removeLine
@@ -48,9 +40,6 @@ var pointer = {
 
 export default {
 	name: 'App',
-	components: {
-		Footer,
-	},
 	mounted() {
 		//마우스 효과
 		polyline = document.querySelector('.drawing_line_polyline')

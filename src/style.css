@@ -13,13 +13,13 @@
 	-webkit-text-size-adjust: 100%;
 }
 
-.footerbg {
+.menusbg {
 	font-size: large;
 	position: fixed;
 	right: 15px;
 	z-index: 1000;
 }
-.footerbg ul li {
+.menusbg ul li {
 	padding: 40px 0 0 0;
 }
 ul {
@@ -81,27 +81,6 @@ button:focus-visible {
 ::-webkit-scrollbar-track {
 	background-color: #242424;
 }
-/* 
-a:hover {
-  color: #747bff;
-}
-button {
-	background-color: #f9f9f9;
-}
-
-@media (prefers-color-scheme: light) {
-	:root {
-		color: #213547 
-		background-color: #1a1a1a;
-	}
-	a:hover {
-		color: #747bff;
-	}
-	button {
-		background-color: #f9f9f9;
-	}
-}
-*/
 
 .box-snaps {
 	height: 100%;
@@ -134,4 +113,9 @@ button {
 
 .holster .holster-in-box {
 	padding: 0 80px;
+}
+
+a:hover,
+a.router-link-active {
+	border-bottom: 2px solid #d3d3d3;
 }
