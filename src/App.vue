@@ -1,5 +1,5 @@
 <template>
-	<div id="drawing_line" class="content scrollbar">
+	<div id="drawing_line">
 		<svg class="drawing_line_svg">
 			<circle class="drawing_line_circle" cx="0" cy="0" r="4"></circle>
 			<polyline class="drawing_line_polyline" points=""></polyline>
@@ -112,60 +112,4 @@ export default {
 }
 </script>
 
-<style>
-.content {
-	min-width: 500px;
-	position: relative;
-}
-
-.holster {
-	height: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	flex-flow: column nowrap;
-}
-
-a {
-	font-weight: lighter;
-	color: #f1f1f1;
-	text-decoration: none;
-	margin-right: 1.4em;
-}
-.fade-enter-from,
-.fade-leave-to {
-	opacity: 0;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-	transition: opacity 0.5s ease-out;
-}
-
-/* 마우스 커서 따라다니는 효과 */
-html {
-	cursor: none;
-}
-#drawing_line {
-	position: relative;
-	z-index: 1500;
-	height: 0;
-}
-#drawing_line > svg {
-	position: fixed;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	z-index: 1;
-	pointer-events: none;
-}
-#drawing_line > svg .drawing_line_polyline {
-	fill: none;
-	stroke: #ff0000;
-	stroke-width: 2;
-}
-#drawing_line > svg .drawing_line_circle {
-	fill: #ff0000;
-}
-</style>
+<style></style>

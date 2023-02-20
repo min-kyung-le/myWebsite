@@ -23,14 +23,4 @@ export default {
 }
 </script>
 
-<style>
-.menus-icon-wrap {
-	display: flex;
-	justify-content: end;
-}
-.menus-icon-wrap img {
-	width: 2vw;
-	height: 4vh;
-	padding: 11px 10px 0 0;
-}
-</style>
+<style></style>

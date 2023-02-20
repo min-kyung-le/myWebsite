@@ -177,35 +177,4 @@ export default {
 }
 </script>
 
-<style>
-.a {
-	width: 100px;
-	height: 100px;
-	background-color: red;
-	margin-bottom: 17px;
-	margin-left: 10px;
-}
-.secense .front {
-	position: absolute;
-	color: #f1f1f1;
-}
-.secense {
-	color: #474747;
-	position: absolute;
-	font-size: 3rem;
-}
-
-.secense .secense-done {
-	color: #f1f1f1;
-	z-index: 11;
-	opacity: 0;
-}
-
-.color-white {
-	color: #f1f1f1 !important;
-}
-
-.inactive {
-	display: none;
-}
-</style>
+<style></style>

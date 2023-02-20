@@ -18,19 +18,19 @@
 					<path
 						d="M0.5 29.5H94L81 17"
 						class="arrow-right-black"
-						stroke="#242424"
+						stroke="#252b33"
 						stroke-linecap="round"
 						stroke-linejoin="round"></path>
 					<path
 						d="M0.5 29.5H94L81 42"
 						class="arrow-right-black"
-						stroke="#242424"
+						stroke="#252b33"
 						stroke-linecap="round"
 						stroke-linejoin="round"></path>
 				</g>
 				<defs>
 					<clipPath id="clip0_651_11245">
-						<rect class="arrow-right-black" width="94" height="60" fill="#242424"></rect>
+						<rect class="arrow-right-black" width="94" height="60" fill="#252b33"></rect>
 					</clipPath>
 				</defs>
 			</svg>
@@ -126,28 +126,4 @@ export default {
 }
 </script>
 
-<style>
-.list {
-	font-size: 3.2rem;
-	color: #f1f1f1;
-	background-color: #242424;
-	padding: 8px 4px 5px 4px;
-	height: 80px;
-	border-bottom: solid 1px #f1f1f1;
-	opacity: 0;
-	transform: translateY(20px);
-}
-
-.list:hover {
-	background-color: #f1f1f1;
-	color: #242424;
-	transition: 0.2s ease-in-out;
-	animation-iteration-count: 1;
-}
-
-.home-3 {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-}
-</style>
+<style></style>
