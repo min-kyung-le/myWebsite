@@ -74,7 +74,7 @@ h1 {
 	height: 100%;
 	flex: none;
 	transition: all 1s cubic-bezier(0.34, -0.6, 0.515, 1.57);
-	padding: 15px 0;
+	padding: 15px 60px;
 }
 .box-snaps-wrap {
 	display: flex;
@@ -170,10 +170,11 @@ html {
 }
 .home1-snaps {
 	width: 91vw;
-	height: 100vh;
 	flex: none;
-	padding: 15px 0;
 	font-size: 2rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
 .a {
