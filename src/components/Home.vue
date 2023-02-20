@@ -1,9 +1,10 @@
 <template>
 	<div class="box-snaps-wrap">
 		<div ref="app1" class="nav home1-snaps">
-			<div class="draw-line"></div>
+			<div class="dl draw-line"></div>
 			<div class="typing"></div>
-			<section class="gallery">
+			<div class="dl draw-line2"></div>
+			<section class="gallery g1">
 				<div class="gtb gallery-text-bg2"></div>
 				<div class="gt gallery-text2"></div>
 				<ul class="wrap wrapper2">
@@ -24,7 +25,7 @@
 					</li>
 				</ul>
 			</section>
-			<section class="gallery">
+			<section class="gallery g2">
 				<div class="gtb gallery-text-bg3"></div>
 				<div class="gt gallery-text3"></div>
 				<ul class="wrap wrapper3">
@@ -98,10 +99,10 @@ export default {
 	mounted() {
 		this.slideLine()
 		this.isTyping()
+		this.isScrollDown()
 		this.slideImg()
 		this.isTyping2()
 		this.isTyping3()
-		this.isScrollDown()
 	},
 	methods: {
 		slideImg() {
@@ -139,6 +140,11 @@ export default {
 		},
 		slideLine() {
 			tl.to('.draw-line', {
+				delay: 0.7,
+				width: window.innerWidth - 5,
+				duration: 1,
+				ease: 'power2.easeInOut',
+			}).to('.draw-line2', {
 				delay: 0.7,
 				width: window.innerWidth - 5,
 				duration: 1,
@@ -202,7 +208,7 @@ export default {
 			tl.to('#arrow-down', {
 				y: 8,
 				yoyo: true,
-				repeat: 50,
+				repeat: 5,
 				duration: 0.3,
 				ease: 'power1.inOut',
 			})
@@ -228,16 +234,10 @@ ul.wrap {
 .wrap {
 	display: flex;
 }
-.gallery {
-	margin-bottom: 20px;
-}
-.gallery:not(.last) {
-	padding-bottom: 1rem;
-}
-
 .typing {
 	margin: 0 60px;
-	min-height: 200px;
+	min-height: 431px;
+	font-size: 68px;
 }
 .gtb {
 	background-color: var(--black);
@@ -256,5 +256,18 @@ ul.wrap {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+.g1 {
+	margin-top: 180px;
+}
+
+.wrapper3 {
+	margin-top: -17px;
+}
+.gallery-text-bg3 {
+	margin-top: -33px;
+}
+.gallery-text3 {
+	margin-top: -37px;
 }
 </style>

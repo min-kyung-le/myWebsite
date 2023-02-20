@@ -157,11 +157,11 @@ html {
 	text-align: center;
 	align-content: center;
 }
-.draw-line {
+.dl {
 	background-color: var(--light1);
-	width: 100px;
+	width: 0;
 	height: 2px;
-	margin: 0 0 22px 0;
+	margin: 40px 0 22px 0;
 }
 .home1-wrap {
 	display: flex;
@@ -169,12 +169,13 @@ html {
 	justify-content: space-between;
 }
 .home1-snaps {
-	width: 91vw;
+	width: 100vw;
 	flex: none;
 	font-size: 2rem;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	overflow-x: hidden;
 }
 
 .a {
