@@ -2,7 +2,12 @@
 	<div class="box-snaps-wrap">
 		<div ref="app1" class="nav home1-snaps">
 			<div class="dl draw-line"></div>
-			<div class="typing"></div>
+			<div class="typing-wrap">
+				<div class="span-wrap">
+					<div class="typing"></div>
+					<span class="cursor">|</span>
+				</div>
+			</div>
 			<div class="dl draw-line2"></div>
 			<section class="gallery g1">
 				<div class="gtb gallery-text-bg2"></div>
@@ -48,7 +53,7 @@
 			</section>
 		</div>
 		<div class="scroll-down-box">
-			<div class="scroll-down">SCROLL DOWN</div>
+			<div class="scroll-down">{{ scrollDownText }}</div>
 			<div id="arrow-down" class="scroll-down">
 				<svg
 					fill="#e9ebec"
@@ -83,18 +88,17 @@ gsap.registerPlugin(ScrollTrigger)
 gsap.registerPlugin(TextPlugin)
 
 let tl = gsap.timeline()
-let text = `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nemo quam ea sequi nisi illo eveniet sed,
-				laborum accusamus nihil enim accusantium laboriosam debitis facere veniam fugit delectus vitae, dolore
-				iste.`
-let text2 = 'You can see more in the Graph menu.'
-let text3 = 'You can see more in the Career menu.'
+let text2 = '주 기술 스택 : Javascript, Vue, Vuetify'
+let text3 = '그외 스택 : Java, Spring Boot, JPA, Mybatis'
 export default {
 	components: {
 		Home2,
 		Home3,
 	},
 	data() {
-		return {}
+		return {
+			scrollDownText: '더보기',
+		}
 	},
 	mounted() {
 		this.slideLine()
@@ -111,6 +115,12 @@ export default {
 
 			gsap.utils.toArray('.wrap li').forEach((li, index) => {
 				tl.to(li, {
+					scrollTrigger: {
+						trigger: li,
+						scrub: 1,
+						start: 'top bottom',
+						end: 'bottom top',
+					},
 					y: -15,
 					opacity: 1,
 					duration: 0.2,
@@ -139,39 +149,81 @@ export default {
 			})
 		},
 		slideLine() {
-			tl.to('.draw-line', {
+			gsap.to('.draw-line', {
 				delay: 0.7,
 				width: window.innerWidth - 5,
 				duration: 1,
 				ease: 'power2.easeInOut',
-			}).to('.draw-line2', {
-				delay: 0.7,
+			})
+			gsap.to('.draw-line2', {
+				delay: 1,
 				width: window.innerWidth - 5,
 				duration: 1,
 				ease: 'power2.easeInOut',
 			})
 		},
 		isTyping() {
-			tl.to('.typing', {
-				text: {
-					value: text,
-					delimiter: '',
-				},
-				delay: 0.7,
-				duration: 2.5,
-				ease: 'power1.inOut',
-			})
+			const sens = []
+			const t1 = '안녕하세요. 만나뵙게 되어 반갑습니다.'
+			const t2 = '최신 IT트렌드에 귀기울이는'
+			const t3 = '사용자의 입장에서 고민하는'
+			const t4 = '프론트엔드 개발자 이민경입니다 :)'
+			sens.push(t1, t2, t3, t4)
+
+			let i = 0
+			for (let one of sens) {
+				i++
+				let target = '.typing'
+				tl.set(target, {
+					width: 'auto',
+				}).to(target, {
+					text: {
+						value: one,
+						delimiter: '',
+					},
+					delay: i == 1 ? 1.5 : 0.2,
+					duration: 2,
+					ease: 'steps(12)',
+				})
+
+				if (i < sens.length)
+					tl.to(target, {
+						delay: i == 1 ? 1.5 : 0.2,
+						width: 0,
+						duration: 2,
+						ease: 'steps(12)',
+					}).set(target, {
+						text: {
+							value: '',
+							delimiter: '',
+						},
+					})
+			}
 		},
 		isTyping2() {
 			const getHeight = window.getComputedStyle(document.querySelector('.wrapper2 li')).height
-			document.querySelector('.gallery-text-bg2').style.height = getHeight
-			document.querySelector('.gallery-text2').style.height = getHeight
+			const gtextbg2 = '.gallery-text-bg2'
+			const gtext2 = '.gallery-text2'
+			document.querySelector(gtextbg2).style.height = getHeight
+			document.querySelector(gtext2).style.height = getHeight
 
-			tl.to('.gallery-text-bg2', {
+			tl.to(gtextbg2, {
+				scrollTrigger: {
+					trigger: gtextbg2,
+					scrub: 3,
+					start: 'top bottom',
+					end: 'bottom top',
+				},
 				opacity: 0.7,
 				duration: 0.2,
 			})
-			tl.to('.gallery-text2', {
+			tl.to(gtext2, {
+				scrollTrigger: {
+					trigger: gtext2,
+					scrub: 8,
+					start: 'top-=600 bottom',
+					end: 'bottom-=50 center',
+				},
 				text: {
 					value: text2,
 					delimiter: '',
@@ -183,14 +235,28 @@ export default {
 		},
 		isTyping3() {
 			const getHeight = window.getComputedStyle(document.querySelector('.wrapper3 li')).height
-			document.querySelector('.gallery-text-bg3').style.height = getHeight
-			document.querySelector('.gallery-text3').style.height = getHeight
+			const gtextbg3 = '.gallery-text-bg3'
+			const gtext3 = '.gallery-text3'
+			document.querySelector(gtextbg3).style.height = getHeight
+			document.querySelector(gtext3).style.height = getHeight
 
-			tl.to('.gallery-text-bg3', {
+			tl.to(gtextbg3, {
+				scrollTrigger: {
+					trigger: gtextbg3,
+					scrub: 5,
+					start: 'top bottom',
+					end: 'bottom top',
+				},
 				opacity: 0.7,
 				duration: 0.2,
 			})
-			tl.to('.gallery-text3', {
+			tl.to(gtext3, {
+				scrollTrigger: {
+					trigger: gtext3,
+					scrub: 5,
+					start: 'top-=200 bottom',
+					end: 'bottom-=250 center',
+				},
 				text: {
 					value: text3,
 					delimiter: '',
@@ -235,9 +301,16 @@ ul.wrap {
 	display: flex;
 }
 .typing {
-	margin: 0 60px;
-	min-height: 431px;
-	font-size: 68px;
+	margin: 0 8px 0 60px;
+	overflow: hidden;
+	height: 100px;
+}
+.typing-wrap {
+	min-height: 450px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
 }
 .gtb {
 	background-color: var(--black);
@@ -260,7 +333,6 @@ ul.wrap {
 .g1 {
 	margin-top: 180px;
 }
-
 .wrapper3 {
 	margin-top: -17px;
 }
@@ -269,5 +341,28 @@ ul.wrap {
 }
 .gallery-text3 {
 	margin-top: -37px;
+}
+.cursor {
+	opacity: 1;
+	animation: blink 0.7s linear infinite;
+	display: inline-block;
+	font-size: 72px;
+}
+@keyframes blink {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+.span-wrap {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	font-size: 68px;
 }
 </style>
