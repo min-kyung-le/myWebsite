@@ -250,3 +250,24 @@ html {
 	flex-direction: column;
 	justify-content: center;
 }
+
+.graph-wrap {
+	padding: 50px 10px 10px 5px;
+	display: flex;
+	flex-direction: row;
+	justify-content: first baseline;
+}
+
+.graph-wrapper {
+	display: flex;
+	align-items: baseline;
+	min-height: 100vh;
+}
+.graph-wrapper .inbox {
+	background-color: var(--black);
+	border: solid 1px var(--grey);
+	border-radius: 10px;
+	margin: 0 10px 10px 10px;
+	color: var(--light1);
+	padding: 15px 12px;
+}

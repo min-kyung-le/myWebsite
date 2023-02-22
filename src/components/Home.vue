@@ -166,7 +166,7 @@ export default {
 		},
 		isTyping() {
 			const sens = []
-			const t1 = '안녕하세요. 만나뵙게 되어 반갑습니다.'
+			const t1 = '안녕하세요.'
 			const t2 = '최신 IT트렌드에 귀기울이는'
 			const t3 = '사용자의 입장에서 고민하는'
 			const t4 = '프론트엔드 개발자 이민경입니다 :)'
@@ -187,7 +187,7 @@ export default {
 						value: one,
 						delimiter: '',
 					},
-					delay: i == 1 ? 1 : 0.2,
+					delay: i == 1 ? 0.2 : 0.2,
 					duration: 1,
 					ease: 'steps(12)',
 				})
