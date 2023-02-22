@@ -187,10 +187,12 @@ html {
 	margin-bottom: 17px;
 	margin-left: 10px;
 }
-.secense-wrap .front {
+.secense-wrap .front,
+.front-title {
 	position: absolute;
 	color: var(--light1);
 }
+
 .secense-wrap {
 	color: var(--darkgrey);
 	position: absolute;
@@ -200,6 +202,11 @@ html {
 .secense,
 .front {
 	height: 50px;
+}
+.secense-wrap .title {
+	font-size: 65px;
+	height: 108px;
+	top: 0;
 }
 
 .color-white {
