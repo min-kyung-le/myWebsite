@@ -1,19 +1,17 @@
 <template>
 	<div ref="target" class="box-snaps holster-in-box">
 		<div class="a"></div>
-		<div class="secense" :style="setStyle">
-			<div id="sec" class="secense-1">Lorem ipsum dolor sit, amet consectetur</div>
-			<div class="secense-2">adipisicing elit. Inventore, placeat?</div>
-			<div class="secense-3">Voluptate ratione corrupti ipsam laborum</div>
-			<div class="secense-4">fugit itaque nostrum debitis sint. Similique,</div>
-			<div class="secense-5">deleniti culpa! Atque quas maxime,</div>
-			<div class="secense-6">praesentium voluptatem esse impedit!</div>
+		<div class="secense-wrap" :style="setStyle">
+			<div class="secense secense-1"></div>
+			<div class="secense secense-2"></div>
+			<div class="secense secense-3"></div>
+			<div class="secense secense-4"></div>
+			<div class="secense secense-5"></div>
 			<div class="front front-1"></div>
 			<div class="front front-2"></div>
 			<div class="front front-3"></div>
 			<div class="front front-4"></div>
 			<div class="front front-5"></div>
-			<div class="front front-6"></div>
 			<div class="secense-done"></div>
 		</div>
 	</div>
@@ -34,12 +32,11 @@ export default {
 	data() {
 		return {
 			textarea: [
-				'Lorem ipsum dolor sit, amet consectetur',
-				'adipisicing elit. Inventore, placeat?',
-				'Voluptate ratione corrupti ipsam laborum',
-				'fugit itaque nostrum debitis sint. Similique,',
-				'deleniti culpa! Atque quas maxime,',
-				'praesentium voluptatem esse impedit!',
+				'자신있게 말씀드리는 핵심 역량',
+				'고객사에 파견되어 근무를 했기 때문에 다양한 사람들과 원활한 소통이 가능합니다.',
+				'Javascript, Vue, Vuetify, chart.js로 프론트엔드 웹 개발을 진행했습니다.',
+				'JAVA, JPA, Database, Node.js를 이용한 자사솔루션 개발을 진행했습니다.',
+				'망설임없이 도전하는 성격으로 최신 IT경향, 웹트렌드에 민감합니다.',
 			],
 		}
 	},
@@ -49,14 +46,14 @@ export default {
 		},
 	},
 	mounted() {
-		let sec = document.getElementById('sec')
+		this.setTextarea()
+		let secense = document.getElementsByClassName('secense')
 		let fronts = document.getElementsByClassName('front')
-		let clientHeight = sec.clientHeight
 
 		let i = 0
-		for (let front of fronts) {
-			let setclientHeight = clientHeight * i
-			front.style.top = setclientHeight + 'px'
+		for (let sec of secense) {
+			let setclientHeight = sec.clientHeight * i
+			fronts[i].style.top = setclientHeight + 'px'
 			i++
 		}
 
@@ -64,87 +61,35 @@ export default {
 		this.isTypeing()
 	},
 	methods: {
+		setTextarea() {
+			gsap.utils.toArray('.secense').forEach((front, index) => {
+				tl.set(front, {
+					text: {
+						value: this.textarea[index],
+						delimiter: '',
+					},
+				})
+			})
+		},
 		isTypeing() {
 			let rough =
 				'rough({ strength: 1, points: 20, template: none.out, taper: none, randomize: true, clamp: false })'
-			tl.to('.front-1', {
-				scrollTrigger: {
-					trigger: '.secense-1',
-					start: 'top-=50 center',
-					end: 'bottom center',
-					scrub: 2,
-				},
-				text: {
-					value: this.textarea[0],
-					delimiter: '',
-				},
-				ease: rough,
+
+			gsap.utils.toArray('.front').forEach((front, index) => {
+				tl.to(front, {
+					scrollTrigger: {
+						trigger: '.secense-' + (index + 1),
+						start: 'top-=200 center',
+						end: 'bottom-=130 center',
+						scrub: 2,
+					},
+					text: {
+						value: this.textarea[index],
+						delimiter: '',
+					},
+					ease: rough,
+				})
 			})
-				.to('.front-2', {
-					scrollTrigger: {
-						trigger: '.secense-2',
-						start: 'top-=50 center',
-						end: 'bottom center',
-						scrub: 2,
-					},
-					text: {
-						value: this.textarea[1],
-						delimiter: '',
-					},
-					ease: rough,
-				})
-				.to('.front-3', {
-					scrollTrigger: {
-						trigger: '.secense-3',
-						start: 'top-=50 center',
-						end: 'center center',
-						scrub: 2,
-					},
-					text: {
-						value: this.textarea[2],
-						delimiter: '',
-					},
-					ease: rough,
-				})
-				.to('.front-4', {
-					scrollTrigger: {
-						trigger: '.secense-4',
-						start: 'top-=50 center',
-						end: 'top center+=60',
-						scrub: 2,
-					},
-					text: {
-						value: this.textarea[3],
-						delimiter: '',
-					},
-					ease: rough,
-				})
-				.to('.front-5', {
-					scrollTrigger: {
-						trigger: '.secense-5',
-						start: 'top-=50 center',
-						end: 'center bottom',
-						scrub: 2,
-					},
-					text: {
-						value: this.textarea[4],
-						delimiter: '',
-					},
-					ease: rough,
-				})
-				.to('.front-6', {
-					scrollTrigger: {
-						trigger: '.secense-6',
-						start: 'top-=50 center',
-						end: 'bottom bottom',
-						scrub: 2,
-					},
-					text: {
-						value: this.textarea[5],
-						delimiter: '',
-					},
-					ease: rough,
-				})
 		},
 		circleSqure() {
 			let tl2 = gsap.timeline().to(

@@ -187,20 +187,19 @@ html {
 	margin-bottom: 17px;
 	margin-left: 10px;
 }
-.secense .front {
+.secense-wrap .front {
 	position: absolute;
 	color: var(--light1);
 }
-.secense {
+.secense-wrap {
 	color: var(--darkgrey);
 	position: absolute;
 	font-size: 28px;
 }
 
-.secense .secense-done {
-	color: var(--light1);
-	z-index: 11;
-	opacity: 0;
+.secense,
+.front {
+	height: 50px;
 }
 
 .color-white {
