@@ -70,7 +70,7 @@ export default {
 			tl.to('.front-1', {
 				scrollTrigger: {
 					trigger: '.secense-1',
-					start: 'center bottom-=40',
+					start: 'top-=50 center',
 					end: 'bottom center',
 					scrub: 2,
 				},
@@ -83,7 +83,7 @@ export default {
 				.to('.front-2', {
 					scrollTrigger: {
 						trigger: '.secense-2',
-						start: 'center bottom-=60',
+						start: 'top-=50 center',
 						end: 'bottom center',
 						scrub: 2,
 					},
@@ -96,7 +96,7 @@ export default {
 				.to('.front-3', {
 					scrollTrigger: {
 						trigger: '.secense-3',
-						start: 'top bottom',
+						start: 'top-=50 center',
 						end: 'center center',
 						scrub: 2,
 					},
@@ -109,7 +109,7 @@ export default {
 				.to('.front-4', {
 					scrollTrigger: {
 						trigger: '.secense-4',
-						start: 'top bottom',
+						start: 'top-=50 center',
 						end: 'top center+=60',
 						scrub: 2,
 					},
@@ -122,7 +122,7 @@ export default {
 				.to('.front-5', {
 					scrollTrigger: {
 						trigger: '.secense-5',
-						start: 'top bottom-=40',
+						start: 'top-=50 center',
 						end: 'center bottom',
 						scrub: 2,
 					},
@@ -135,7 +135,7 @@ export default {
 				.to('.front-6', {
 					scrollTrigger: {
 						trigger: '.secense-6',
-						start: 'top bottom-=40',
+						start: 'top-=50 center',
 						end: 'bottom bottom',
 						scrub: 2,
 					},

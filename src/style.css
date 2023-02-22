@@ -150,13 +150,10 @@ html {
 
 .scroll-down-box {
 	font-size: medium;
-	position: fixed;
-	bottom: 10px;
-	left: 45%;
 	opacity: 0;
 }
 .scroll-down {
-	width: 120px;
+	transform: translate(0, 4);
 	padding-top: 2px;
 	text-align: center;
 	align-content: center;
@@ -176,7 +173,7 @@ html {
 .home1-snaps {
 	width: 100vw;
 	flex: none;
-	font-size: 2rem;
+	font-size: 28px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -197,7 +194,7 @@ html {
 .secense {
 	color: var(--darkgrey);
 	position: absolute;
-	font-size: 3rem;
+	font-size: 28px;
 }
 
 .secense .secense-done {

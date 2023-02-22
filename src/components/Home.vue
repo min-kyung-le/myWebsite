@@ -5,10 +5,29 @@
 			<div class="typing-wrap">
 				<div class="span-wrap">
 					<div class="typing"></div>
-					<span class="cursor">|</span>
+					<span id="cursor">|</span>
 				</div>
 			</div>
 			<div class="dl draw-line2"></div>
+			<div class="scroll-down-box">
+				<div class="scroll-down">{{ scrollDownText }}</div>
+				<div id="arrow-down" class="scroll-down">
+					<svg
+						fill="#e9ebec"
+						enable-background="new 0 0 50 50"
+						height="20px"
+						id="arrow-down-svg"
+						version="1.1"
+						viewBox="0 0 50 50"
+						width="20px"
+						xml:space="preserve"
+						xmlns="http://www.w3.org/2000/svg"
+						xmlns:xlink="http://www.w3.org/1999/xlink">
+						<rect fill="none" height="50" width="50" />
+						<polygon points="47.25,15 45.164,12.914 25,33.078 4.836,12.914 2.75,15 25,37.25 " />
+					</svg>
+				</div>
+			</div>
 			<section class="gallery g1">
 				<div class="gtb gallery-text-bg2"></div>
 				<div class="gt gallery-text2"></div>
@@ -33,6 +52,8 @@
 			<section class="gallery g2">
 				<div class="gtb gallery-text-bg3"></div>
 				<div class="gt gallery-text3"></div>
+				<div class="gtb gallery-text-bg4"></div>
+				<div class="gt gallery-text4"></div>
 				<ul class="wrap wrapper3">
 					<li>
 						<img height="330" src="@/assets/imgs/1.png" width="630" />
@@ -52,25 +73,6 @@
 				</ul>
 			</section>
 		</div>
-		<div class="scroll-down-box">
-			<div class="scroll-down">{{ scrollDownText }}</div>
-			<div id="arrow-down" class="scroll-down">
-				<svg
-					fill="#e9ebec"
-					enable-background="new 0 0 50 50"
-					height="20px"
-					id="arrow-down-svg"
-					version="1.1"
-					viewBox="0 0 50 50"
-					width="20px"
-					xml:space="preserve"
-					xmlns="http://www.w3.org/2000/svg"
-					xmlns:xlink="http://www.w3.org/1999/xlink">
-					<rect fill="none" height="50" width="50" />
-					<polygon points="47.25,15 45.164,12.914 25,33.078 4.836,12.914 2.75,15 25,37.25 " />
-				</svg>
-			</div>
-		</div>
 		<Home2 ref="app2"></Home2>
 		<Home3 ref="app3"></Home3>
 	</div>
@@ -89,7 +91,7 @@ gsap.registerPlugin(TextPlugin)
 
 let tl = gsap.timeline()
 let text2 = '주 기술 스택 : Javascript, Vue, Vuetify'
-let text3 = '그외 스택 : Java, Spring Boot, JPA, Mybatis'
+let text3 = '보조 기술 스택 : Java, Spring Boot, JPA, Mybatis<br />라이브러리 : GSAP, Chart.js, animation.css'
 export default {
 	components: {
 		Home2,
@@ -97,7 +99,7 @@ export default {
 	},
 	data() {
 		return {
-			scrollDownText: '더보기',
+			scrollDownText: 'YOU CAN SEE MORE CONTENTS!',
 		}
 	},
 	mounted() {
@@ -170,6 +172,10 @@ export default {
 			const t4 = '프론트엔드 개발자 이민경입니다 :)'
 			sens.push(t1, t2, t3, t4)
 
+			tl.to('#cursor', {
+				className: 'cursor',
+				delay: 0.5,
+			})
 			let i = 0
 			for (let one of sens) {
 				i++
@@ -181,8 +187,8 @@ export default {
 						value: one,
 						delimiter: '',
 					},
-					delay: i == 1 ? 1.5 : 0.2,
-					duration: 2,
+					delay: i == 1 ? 1 : 0.2,
+					duration: 1,
 					ease: 'steps(12)',
 				})
 
@@ -190,7 +196,7 @@ export default {
 					tl.to(target, {
 						delay: i == 1 ? 1.5 : 0.2,
 						width: 0,
-						duration: 2,
+						duration: 1,
 						ease: 'steps(12)',
 					}).set(target, {
 						text: {
@@ -258,6 +264,7 @@ export default {
 					end: 'bottom-=250 center',
 				},
 				text: {
+					preserveSpaces: true,
 					value: text3,
 					delimiter: '',
 				},
@@ -267,7 +274,9 @@ export default {
 			})
 		},
 		isScrollDown() {
-			tl.set('.scroll-down-box', {
+			tl.to('.scroll-down-box', {
+				y: -2,
+				duration: 1,
 				opacity: 1,
 			})
 
@@ -303,14 +312,15 @@ ul.wrap {
 .typing {
 	margin: 0 8px 0 60px;
 	overflow: hidden;
-	height: 100px;
+	height: 38px;
 }
 .typing-wrap {
 	min-height: 450px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	align-items: flex-start;
+	align-items: center;
+	font-size: 24px;
 }
 .gtb {
 	background-color: var(--black);
@@ -343,10 +353,12 @@ ul.wrap {
 	margin-top: -37px;
 }
 .cursor {
-	opacity: 1;
 	animation: blink 0.7s linear infinite;
 	display: inline-block;
-	font-size: 72px;
+	font-size: 28px;
+}
+#cursor {
+	opacity: 0;
 }
 @keyframes blink {
 	0% {
@@ -363,6 +375,5 @@ ul.wrap {
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
-	font-size: 68px;
 }
 </style>
