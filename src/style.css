@@ -253,21 +253,22 @@ html {
 
 .graph-wrap {
 	padding: 50px 10px 10px 5px;
-	display: flex;
-	flex-direction: row;
-	justify-content: first baseline;
+	margin: 0 auto;
 }
 
 .graph-wrapper {
 	display: flex;
-	align-items: baseline;
+	align-items: start;
 	min-height: 100vh;
 }
 .graph-wrapper .inbox {
-	background-color: var(--black);
-	border: solid 1px var(--grey);
-	border-radius: 10px;
-	margin: 0 10px 10px 10px;
 	color: var(--light1);
 	padding: 15px 12px;
+	width: 80vw;
+	height: 300px;
+}
+
+.menuBtn {
+	padding: 5px 7px;
+	margin: 10px;
 }

@@ -90,8 +90,8 @@ gsap.registerPlugin(ScrollTrigger)
 gsap.registerPlugin(TextPlugin)
 
 let tl = gsap.timeline()
-let text2 = '주 기술 스택 : Javascript, Vue, Vuetify'
-let text3 = '보조 기술 스택 : Java, Spring Boot, JPA, Mybatis<br />라이브러리 : GSAP, Chart.js, animation.css'
+let text2 = '주 기술 스택 : Javascript, Vue, Vuetify<br />라이브러리 : GSAP, Chart.js, animation.css'
+let text3 = '보조 기술 스택 : Java, Spring Boot, JPA, Mybatis'
 export default {
 	components: {
 		Home2,

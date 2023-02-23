@@ -1,5 +1,5 @@
 <template>
-	<div class="menusbg" v-if="openMenu">
+	<div class="menusbg">
 		<div class="menus-icon-wrap" @click="closeMenu">
 			<img src="@/assets/imgs/left-white.png" />
 		</div>
@@ -15,11 +15,6 @@
 <script>
 export default {
 	name: 'Menus',
-	data() {
-		return {
-			openMenu: false,
-		}
-	},
 	methods: {
 		closeMenu() {
 			this.$emit('isCloseMenu', false)
