@@ -240,15 +240,13 @@ html {
 	transition: 0.2s ease-in-out;
 	animation-iteration-count: 1;
 }
-#home3 {
-	margin-top: 640px;
-	margin-bottom: 100px;
-}
 
 .home-3 {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	margin-top: 640px;
+	margin-bottom: 100px;
 }
 
 .graph-wrap {
