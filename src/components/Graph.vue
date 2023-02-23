@@ -110,14 +110,4 @@ export default {
 }
 </script>
 
-<style>
-#vueLatestTable {
-	/* we can implement some CSS for this "Vue Latest Table" here */
-	margin: 0 auto;
-	margin-top: 30px;
-}
-
-.searchBox {
-	color: #333 !important;
-}
-</style>
+<style></style>
