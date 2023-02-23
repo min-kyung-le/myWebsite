@@ -1,11 +1,11 @@
 <template>
 	<div class="graph-home">
-		<Transition
-			enter-active-class="animate__animated animate__fadeInLeft"
-			leave-active-class="animate__animated animate__fadeOutLeft">
-			<Footer v-if="isMenuShow" @isCloseMenu="menuBtn"></Footer>
-		</Transition>
-		<div v-if="!isMenuShow" class="menuBtn" @click="menuBtn(true)">
+		<div
+			class="close-bg"
+			style="background-color: var(--black); width: 100vw; position: absolute; left: 0; z-index: 1">
+			<Menus v-if="isShow" :isShow="isShow" :setClass="setClass" @isCloseMenu="menuBtn"></Menus>
+		</div>
+		<div class="menuBtn" @click="menuBtn(!isShow)">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				width="30"
@@ -31,7 +31,6 @@
 </template>
 
 <script>
-import Footer from '@/layout/Footer.vue'
 import { Line } from 'vue-chartjs'
 import {
 	Chart as ChartJS,
@@ -46,13 +45,18 @@ import {
 
 import 'vue-good-table-next/dist/vue-good-table-next.css'
 import { VueGoodTable } from 'vue-good-table-next'
+import { gsap } from 'gsap'
+import Menus from '@/layout/Menus.vue'
 
 ChartJS.register(Title, Tooltip, Legend, PointElement, LineElement, CategoryScale, LinearScale)
+
+let tl = gsap.timeline()
 export default {
-	components: { Footer, Line, VueGoodTable },
+	components: { Menus, Line, VueGoodTable },
 	data() {
 		return {
-			isMenuShow: false,
+			setClass: 'menus',
+			isShow: false,
 			chartData: {
 				labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
 				datasets: [
@@ -108,7 +112,17 @@ export default {
 	},
 	methods: {
 		menuBtn(val) {
-			this.isMenuShow = val
+			this.isShow = val
+
+			if (val)
+				tl.to('.close-bg', {
+					height: '100vh',
+				})
+			if (!val)
+				tl.to('.close-bg', {
+					height: 0,
+					duration: 1,
+				})
 		},
 	},
 }

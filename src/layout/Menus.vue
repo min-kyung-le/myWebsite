@@ -1,5 +1,35 @@
 <template>
-	<div ref="target" id="home3" class="box-snaps home-3 holster-in-box">
+	<div ref="target" id="home3" :class="'box-snaps holster-in-box ' + setClass">
+		<div class="menus-icon-wrap" @click="closeMenu">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				xmlns:xlink="http://www.w3.org/1999/xlink"
+				viewBox="0,0,256,256"
+				width="50px"
+				height="50px"
+				fill-rule="nonzero">
+				<g
+					fill="#ffffff"
+					fill-rule="nonzero"
+					stroke="none"
+					stroke-width="1"
+					stroke-linecap="butt"
+					stroke-linejoin="miter"
+					stroke-miterlimit="10"
+					stroke-dasharray=""
+					stroke-dashoffset="0"
+					font-family="none"
+					font-weight="none"
+					font-size="none"
+					text-anchor="none"
+					style="mix-blend-mode: normal">
+					<g transform="scale(5.12,5.12)">
+						<path
+							d="M7.71875,6.28125l-1.4375,1.4375l17.28125,17.28125l-17.28125,17.28125l1.4375,1.4375l17.28125,-17.28125l17.28125,17.28125l1.4375,-1.4375l-17.28125,-17.28125l17.28125,-17.28125l-1.4375,-1.4375l-17.28125,17.28125z"></path>
+					</g>
+				</g>
+			</svg>
+		</div>
 		<div
 			v-for="(m, idx) of menus"
 			:key="m.link"
@@ -47,6 +77,10 @@ gsap.registerPlugin(ScrollTrigger)
 let moveOver
 export default {
 	name: 'Home3',
+	props: {
+		isShow: Boolean,
+		setClass: String,
+	},
 	data() {
 		return {
 			menus: [
@@ -66,12 +100,20 @@ export default {
 			this.$router.push(link)
 		},
 		slideEffect() {
+			if (this.isShow)
+				gsap.to('.menus-icon-wrap', {
+					opacity: 1,
+					delay: 0.4,
+					duration: 0.5,
+					y: -20,
+				})
+			let startNum = this.setClass == 'home-3' ? 75 : 1
 			for (let n = 1; n <= this.menus.length; n++) {
 				gsap.to('.list' + n, {
 					scrollTrigger: {
-						trigger: '.home-3',
-						start: 'top' + '+=' + n * 75 + ' center',
-						endTrigger: '.home-3',
+						trigger: '#home3',
+						start: 'top' + '+=' + n * startNum + ' center',
+						endTrigger: '#home3',
 						end: 'top center',
 						ease: 'power2.easeInOut',
 						toggleActions: 'restart none resume reset',
@@ -121,6 +163,9 @@ export default {
 			for (let box of boxs) {
 				box.style.width = setWidth + 'px'
 			}
+		},
+		closeMenu() {
+			this.$emit('isCloseMenu', false)
 		},
 	},
 }

@@ -136,7 +136,7 @@ html {
 	top: 0;
 	width: 100%;
 	height: 100%;
-	z-index: 1;
+	z-index: 1500;
 	pointer-events: none;
 }
 #drawing_line > svg .drawing_line_polyline {
@@ -220,11 +220,7 @@ html {
 .menus-icon-wrap {
 	display: flex;
 	justify-content: end;
-}
-.menus-icon-wrap img {
-	width: 2vw;
-	height: 4vh;
-	padding: 11px 10px 0 0;
+	opacity: 0;
 }
 
 .list {
@@ -243,6 +239,10 @@ html {
 	color: var(--black);
 	transition: 0.2s ease-in-out;
 	animation-iteration-count: 1;
+}
+#home3 {
+	margin-top: 640px;
+	margin-bottom: 100px;
 }
 
 .home-3 {
@@ -298,4 +298,84 @@ html {
 	border-bottom: 1px solid var(--light2);
 	color: var(--light1);
 	background: var(--darkgrey);
+}
+
+.menus {
+	position: absolute;
+	top: 100px;
+}
+
+.img-group {
+	padding-top: 40px;
+	margin-bottom: 140px;
+}
+
+.img-group > div {
+	border-radius: 15px;
+	display: inline-block;
+	margin-right: 45px;
+	box-shadow: 3px 3px 3px 3px var(--black);
+}
+
+.img-group > .img-group-title {
+	display: block;
+	color: var(--light1);
+	font-size: 48px;
+	margin-bottom: 18px;
+}
+
+.vue {
+	width: 280px;
+	height: 190px;
+	background-image: url(@/assets/imgs/vue.jpg);
+	background-size: 280px 190px;
+	transform: translate(-13px, -97px);
+}
+
+.vuetify {
+	width: 290px;
+	height: 170px;
+	background-image: url(@/assets/imgs/vuetify.png);
+	background-size: 290px 170px;
+	transform: translate(-338px, 95px);
+}
+
+.javascript {
+	width: 290px;
+	height: 290px;
+	background-image: url(@/assets/imgs/javascript.png);
+	background-size: 290px 290px;
+	transform: translate(0, 3px);
+}
+
+.chartjs {
+	width: 210px;
+	height: 210px;
+	background-image: url(@/assets/imgs/chartjs.jpg);
+	background-size: 210px 210px;
+	transform: translate(-355px, -15px);
+}
+
+.nodejs {
+	width: 380px;
+	height: 210px;
+	background-image: url(@/assets/imgs/nodejs.jpg);
+	background-size: 380px 210px;
+	transform: translate(638px, -61px);
+}
+
+.greensock {
+	width: 280px;
+	height: 280px;
+	background-image: url(@/assets/imgs/greensock.png);
+	background-size: 280px 280px;
+	transform: translate(620px, -61px);
+}
+
+.animationcss {
+	width: 280px;
+	height: 280px;
+	background-image: url(@/assets/imgs/animationcss.jpg);
+	background-size: 280px 280px;
+	transform: translate(124px, -361px);
 }

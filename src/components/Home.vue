@@ -74,13 +74,13 @@
 			</section>
 		</div>
 		<Home2 ref="app2"></Home2>
-		<Home3 ref="app3"></Home3>
+		<Menus :isShow="isShow" :setClass="setClass" ref="app3"></Menus>
 	</div>
 </template>
 
 <script>
 import Home2 from '@/components/Home2.vue'
-import Home3 from '@/components/Home3.vue'
+import Menus from '@/layout/Menus.vue'
 
 import { gsap } from 'gsap'
 import { TextPlugin } from 'gsap/TextPlugin'
@@ -90,15 +90,17 @@ gsap.registerPlugin(ScrollTrigger)
 gsap.registerPlugin(TextPlugin)
 
 let tl = gsap.timeline()
-let text2 = '주 기술 스택 : Javascript, Vue, Vuetify<br />라이브러리 : GSAP, Chart.js, animation.css'
-let text3 = '보조 기술 스택 : Java, Spring Boot, JPA, Mybatis'
+let text2 = '주 업무 : Vue, Vuetify, Chart.js를 이용한 프로젝트 프론트 개발'
+let text3 = ''
 export default {
 	components: {
 		Home2,
-		Home3,
+		Menus,
 	},
 	data() {
 		return {
+			isShow: false,
+			setClass: 'home-3',
 			scrollDownText: 'YOU CAN SEE MORE CONTENTS!',
 		}
 	},

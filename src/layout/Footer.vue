@@ -1,5 +1,5 @@
 <template>
-	<div class="menusbg">
+	<div class="menusbg menusClass">
 		<div class="menus-icon-wrap" @click="closeMenu">
 			<img src="@/assets/imgs/left-white.png" />
 		</div>
@@ -23,4 +23,8 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.menusClass {
+	display: none;
+}
+</style>

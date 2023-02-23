@@ -1,5 +1,15 @@
 <template>
 	<div ref="target" class="box-snaps holster-in-box">
+		<div class="img-group">
+			<div class="img-group-title">주 사용 스택</div>
+			<div class="img javascript"></div>
+			<div class="img vue"></div>
+			<div class="img vuetify"></div>
+			<div class="img chartjs"></div>
+			<div class="img nodejs"></div>
+			<div class="img greensock"></div>
+			<div class="img animationcss"></div>
+		</div>
 		<div class="a"></div>
 		<div class="secense-wrap" :style="setStyle">
 			<div class="title">자신있게 말씀드리는 핵심 역량</div>
@@ -58,11 +68,13 @@ export default {
 			i++
 		}
 
+		this.slideImg()
 		this.circleSqure()
-		this.isTypeing()
+		this.isTyping()
 	},
 	methods: {
-		isTypeing() {
+		slideImg() {},
+		isTyping() {
 			let rough =
 				'rough({ strength: 1, points: 20, template: none.out, taper: none, randomize: true, clamp: false })'
 
