@@ -1,7 +1,11 @@
 <template>
 	<div class="graph-home">
-		<Footer v-if="isMenuShow" @isCloseMenu="menuBtn"></Footer>
-		<div v-else class="menuBtn" @click="menuBtn(true)">
+		<Transition
+			enter-active-class="animate__animated animate__fadeInLeft"
+			leave-active-class="animate__animated animate__fadeOutLeft">
+			<Footer v-if="isMenuShow" @isCloseMenu="menuBtn"></Footer>
+		</Transition>
+		<div v-if="!isMenuShow" class="menuBtn" @click="menuBtn(true)">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				width="30"
@@ -93,7 +97,7 @@ export default {
 				},
 			],
 			rows: [
-				{ id: 1, name: 'John', age: 20, createdAt: '', score: 0.03343 },
+				{ id: 1, name: 'John', age: 20, createdAt: '2011-10-31', score: 0.03343 },
 				{ id: 2, name: 'Jane', age: 24, createdAt: '2011-10-31', score: 0.03343 },
 				{ id: 3, name: 'Susan', age: 16, createdAt: '2011-10-30', score: 0.03343 },
 				{ id: 4, name: 'Chris', age: 55, createdAt: '2011-10-11', score: 0.03343 },
