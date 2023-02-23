@@ -252,23 +252,50 @@ html {
 }
 
 .graph-wrap {
-	padding: 50px 10px 10px 5px;
 	margin: 0 auto;
-}
-
-.graph-wrapper {
-	display: flex;
-	align-items: start;
-	min-height: 100vh;
-}
-.graph-wrapper .inbox {
 	color: var(--light1);
 	padding: 15px 12px;
 	width: 80vw;
 	height: 300px;
 }
 
+.graph-wrapper {
+	display: flex;
+	align-items: start;
+	min-height: 100vh;
+	justify-content: flex-start;
+	flex-direction: column;
+}
 .menuBtn {
 	padding: 5px 7px;
 	margin: 10px;
+}
+
+.table-wrap {
+	padding: 15px 12px;
+	width: 80vw;
+	height: 200px;
+	margin: 0 auto;
+}
+
+.graph-home {
+	display: flex;
+	align-items: baseline;
+	justify-content: flex-start;
+	flex-direction: row;
+}
+
+.table-wrap .vgt-table thead th {
+	background: var(--black);
+	color: var(--light1);
+	border: 1px solid var(--black);
+	border-top: 1px solid var(--light2);
+	border-bottom: 1px solid var(--light2);
+}
+
+.table-wrap table.vgt-table td {
+	border: 1px solid var(--darkgrey);
+	border-bottom: 1px solid var(--light2);
+	color: var(--light1);
+	background: var(--darkgrey);
 }

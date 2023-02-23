@@ -1,25 +1,26 @@
 <template>
-	<div>
+	<div class="graph-home">
+		<Footer v-if="isMenuShow" @isCloseMenu="menuBtn"></Footer>
+		<div v-else class="menuBtn" @click="menuBtn(true)">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				width="30"
+				height="26"
+				fill="currentColor"
+				class="bi bi-list"
+				viewBox="0 0 16 16">
+				<path
+					fill-rule="evenodd"
+					d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+			</svg>
+		</div>
 		<div class="graph-wrapper">
-			<Footer v-if="isMenuShow" @isCloseMenu="menuBtn"></Footer>
-			<div v-else class="menuBtn" @click="menuBtn(true)">
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					width="30"
-					height="26"
-					fill="currentColor"
-					class="bi bi-list"
-					viewBox="0 0 16 16">
-					<path
-						fill-rule="evenodd"
-						d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
-				</svg>
-			</div>
 			<div class="graph-wrap">
-				<div class="inbox">
-					<div>Line Chart Sample</div>
-					<Line :data="chartData" :options="chartOptions" />
-				</div>
+				<div>Line Chart Sample</div>
+				<Line :data="chartData" :options="chartOptions" />
+			</div>
+			<div class="table-wrap">
+				<vue-good-table :columns="columns" :rows="rows" />
 			</div>
 		</div>
 	</div>
@@ -39,10 +40,12 @@ import {
 	LinearScale,
 } from 'chart.js'
 
-ChartJS.register(Title, Tooltip, Legend, PointElement, LineElement, CategoryScale, LinearScale)
+import 'vue-good-table-next/dist/vue-good-table-next.css'
+import { VueGoodTable } from 'vue-good-table-next'
 
+ChartJS.register(Title, Tooltip, Legend, PointElement, LineElement, CategoryScale, LinearScale)
 export default {
-	components: { Footer, Line },
+	components: { Footer, Line, VueGoodTable },
 	data() {
 		return {
 			isMenuShow: false,
@@ -66,6 +69,37 @@ export default {
 			chartOptions: {
 				maintainAspectRatio: false,
 			},
+			columns: [
+				{
+					label: 'Name',
+					field: 'name',
+				},
+				{
+					label: 'Age',
+					field: 'age',
+					type: 'number',
+				},
+				{
+					label: 'Created On',
+					field: 'createdAt',
+					type: 'date',
+					dateInputFormat: 'yyyy-MM-dd',
+					dateOutputFormat: 'MMM do yy',
+				},
+				{
+					label: 'Percent',
+					field: 'score',
+					type: 'percentage',
+				},
+			],
+			rows: [
+				{ id: 1, name: 'John', age: 20, createdAt: '', score: 0.03343 },
+				{ id: 2, name: 'Jane', age: 24, createdAt: '2011-10-31', score: 0.03343 },
+				{ id: 3, name: 'Susan', age: 16, createdAt: '2011-10-30', score: 0.03343 },
+				{ id: 4, name: 'Chris', age: 55, createdAt: '2011-10-11', score: 0.03343 },
+				{ id: 5, name: 'Dan', age: 40, createdAt: '2011-10-21', score: 0.03343 },
+				{ id: 6, name: 'John', age: 20, createdAt: '2011-10-31', score: 0.03343 },
+			],
 		}
 	},
 	methods: {
@@ -76,4 +110,14 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+#vueLatestTable {
+	/* we can implement some CSS for this "Vue Latest Table" here */
+	margin: 0 auto;
+	margin-top: 30px;
+}
+
+.searchBox {
+	color: #333 !important;
+}
+</style>
