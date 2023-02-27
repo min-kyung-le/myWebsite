@@ -68,12 +68,32 @@ export default {
 			i++
 		}
 
-		this.slideImg()
+		this.animationImgs()
 		this.circleSqure()
 		this.isTyping()
 	},
 	methods: {
-		slideImg() {},
+		animationImgs() {
+			gsap.utils.toArray('.img').forEach(img => {
+				let idpx = Math.floor(Math.random() * 10) * 30
+				console.log(idpx)
+				tl.to(img, {
+					scrollTrigger: {
+						trigger: '.img-group',
+						start: 'top+=' + idpx + ' center',
+						end: 'center+=150 center',
+						scrub: 2,
+						markers: true,
+					},
+					scaleX: 1,
+					scaleY: 1,
+					opacity: 1,
+					duration: 1,
+					y: -40,
+					ease: 'power1.easeInOut',
+				})
+			})
+		},
 		isTyping() {
 			let rough =
 				'rough({ strength: 1, points: 20, template: none.out, taper: none, randomize: true, clamp: false })'
@@ -115,14 +135,12 @@ export default {
 					x: '+=1100',
 					yoyo: true,
 					rotation: 1080,
-					// duration: 6,
 					ease: 'back.out(1.7)',
 				},
 				{
 					x: '-=1100',
 					yoyo: true,
 					rotation: -1080,
-					// duration: 6,
 					ease: 'back.out(1.7)',
 				}
 			)

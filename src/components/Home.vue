@@ -129,6 +129,7 @@ export default {
 					opacity: 1,
 					duration: 0.2,
 					delay: index == 0 ? 0.4 : index * 0.1,
+					scale: 1,
 				})
 			})
 

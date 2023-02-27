@@ -308,11 +308,14 @@ html {
 	margin-bottom: 140px;
 }
 
-.img-group > div {
+.img-group .img {
+	opacity: 0;
 	border-radius: 15px;
 	display: inline-block;
 	margin-right: 45px;
 	box-shadow: 3px 3px 3px 3px var(--black);
+	margin-top: 40px;
+	scale: 0.5;
 }
 
 .img-group > .img-group-title {
