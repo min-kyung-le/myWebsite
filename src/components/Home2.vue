@@ -68,23 +68,41 @@ export default {
 			i++
 		}
 
-		this.animationImgs()
+		ScrollTrigger.create({
+			trigger: '.img-group',
+			start: 'top-=80px center',
+			end: 'bottom+=160px center',
+			scrub: 5,
+			onEnter: () => {
+				this.animationImgs()
+			},
+			onEnterBack: () => {
+				this.animationImgs()
+			},
+			onLeave: () => {
+				this.initImgs()
+			},
+			onLeaveBack: () => {
+				this.initImgs()
+			},
+		})
 		this.circleSqure()
 		this.isTyping()
 	},
 	methods: {
+		initImgs() {
+			gsap.utils.toArray('.img').forEach(img => {
+				gsap.set(img, {
+					opacity: 0,
+					scaleX: 0,
+					scaleY: 0,
+				})
+			})
+		},
 		animationImgs() {
 			gsap.utils.toArray('.img').forEach(img => {
-				let idpx = Math.floor(Math.random() * 10) * 30
-				console.log(idpx)
-				tl.to(img, {
-					scrollTrigger: {
-						trigger: '.img-group',
-						start: 'top+=' + idpx + ' center',
-						end: 'center+=150 center',
-						scrub: 2,
-						markers: true,
-					},
+				gsap.to(img, {
+					delay: 'random([0.2, 0.5, 0.4, 0.8])',
 					scaleX: 1,
 					scaleY: 1,
 					opacity: 1,
