@@ -90,8 +90,8 @@ gsap.registerPlugin(ScrollTrigger)
 gsap.registerPlugin(TextPlugin)
 
 let tl = gsap.timeline()
-let text2 = '주 업무 : Vue, Vuetify, Chart.js를 이용한 프로젝트 프론트 개발'
-let text3 = ''
+let text2 = ''
+let text3 = '주 업무 : Vue, Vuetify, Chart.js를 이용한 프로젝트 프론트 개발'
 export default {
 	components: {
 		Home2,
@@ -189,7 +189,7 @@ export default {
 						value: one,
 						delimiter: '',
 					},
-					delay: i == 1 ? 0.2 : 0.2,
+					delay: 0.2,
 					duration: 1,
 					ease: 'steps(12)',
 				})

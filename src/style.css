@@ -327,7 +327,6 @@ html {
 	height: 190px;
 	background-image: url(@/assets/imgs/vue.jpg);
 	background-size: 280px 190px;
-	transform: translate(-13px, -97px);
 }
 
 .vuetify {
@@ -335,7 +334,6 @@ html {
 	height: 170px;
 	background-image: url(@/assets/imgs/vuetify.png);
 	background-size: 290px 170px;
-	transform: translate(-338px, 95px);
 }
 
 .javascript {
@@ -343,7 +341,6 @@ html {
 	height: 290px;
 	background-image: url(@/assets/imgs/javascript.png);
 	background-size: 290px 290px;
-	transform: translate(0, 3px);
 }
 
 .chartjs {
@@ -351,7 +348,6 @@ html {
 	height: 210px;
 	background-image: url(@/assets/imgs/chartjs.jpg);
 	background-size: 210px 210px;
-	transform: translate(-355px, -15px);
 }
 
 .nodejs {
@@ -359,7 +355,6 @@ html {
 	height: 210px;
 	background-image: url(@/assets/imgs/nodejs.jpg);
 	background-size: 380px 210px;
-	transform: translate(638px, -61px);
 }
 
 .greensock {
@@ -367,7 +362,7 @@ html {
 	height: 280px;
 	background-image: url(@/assets/imgs/greensock.png);
 	background-size: 280px 280px;
-	transform: translate(620px, -61px);
+	margin-top: 10px;
 }
 
 .animationcss {
@@ -375,5 +370,4 @@ html {
 	height: 280px;
 	background-image: url(@/assets/imgs/animationcss.jpg);
 	background-size: 280px 280px;
-	transform: translate(124px, -361px);
 }
