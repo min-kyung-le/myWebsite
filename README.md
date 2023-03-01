@@ -6,6 +6,10 @@ This template should help get you started developing with Vue 3 in Vite. The tem
 
 -   [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
+## 프로젝트 기획
+
+개인 포트폴리오 제작을 위해 기획되었습니다.
+
 ## 사용한 라이브러리
 
 Vue3, Vite, GSAP, vue-router, eslint, prettier, clipboard2, vue-toastification, animate.css
