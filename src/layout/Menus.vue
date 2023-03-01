@@ -97,7 +97,11 @@ export default {
 	},
 	methods: {
 		goPage(link) {
-			this.$router.push(link)
+			if (link == '/graph' || link == '/career') {
+				alert('준비 중입니다.')
+			} else {
+				this.$router.push(link)
+			}
 		},
 		slideEffect() {
 			if (this.isShow)

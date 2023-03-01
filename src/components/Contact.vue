@@ -1,7 +1,8 @@
 <template>
-	<div ref="target" class="large-font" style="background-color: yellowgreen">
+	<div ref="target" class="box-snaps large-font">
+		<sideMenu />
 		<TransitionGroup tag="ul" name="fade" class="container">
-			<div v-for="item in items" class="item" :key="item">
+			<div @click="clickCopy(item)" v-for="item in items" class="item" :key="item">
 				{{ item }}
 			</div>
 		</TransitionGroup>
@@ -9,21 +10,31 @@
 </template>
 
 <script>
+import sideMenu from '@/layout/sideMenu.vue'
+import { useToast } from 'vue-toastification'
+
 const name = 'MinKyung Lee',
 	email = 'minkyung1435@gmail.com',
-	blog = 'BLOG LINK',
-	createDate = 'Made 2023'
+	blog = 'https://blog.naver.com/iminlv752',
+	createDate = '01073190067'
 
 var getInitialItems = () => [name, email, blog, createDate]
 
 export default {
 	name: 'Contact',
+	components: {
+		sideMenu,
+	},
 	data() {
 		return {
 			items: getInitialItems(),
 		}
 	},
 	methods: {
+		clickCopy(copy) {
+			const toast = useToast()
+			toast.success(copy + ' copy!')
+		},
 		reset() {
 			this.items = getInitialItems()
 		},
@@ -56,6 +67,7 @@ export default {
 
 .item {
 	width: 100%;
+	margin-bottom: 10px;
 }
 
 /* 1. declare transition */

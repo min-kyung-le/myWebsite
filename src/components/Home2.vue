@@ -47,8 +47,8 @@ export default {
 			textarea: [
 				'고객사에 파견되어 근무를 했기 때문에 다양한 사람들과 원활한 소통이 가능합니다.',
 				'Javascript, Vue, Vuetify, chart.js로 프론트엔드 웹 개발을 진행했습니다.',
-				'JAVA, JPA, Database, Node.js를 이용한 자사솔루션 개발을 진행했습니다.',
-				'망설임없이 도전하는 성격으로 최신 IT경향, 웹트렌드에 민감합니다.',
+				'JAVA, Spring Boot, Node.js, JPA, MySQL를 이용한 자사솔루션 개발을 진행했습니다.',
+				'망설임없이 도전하는 성격으로 최신 IT경향, 최신 웹트렌드에 민감합니다.',
 			],
 		}
 	},
@@ -92,9 +92,11 @@ export default {
 	methods: {
 		initImgs() {
 			gsap.utils.toArray('.img').forEach(img => {
-				gsap.set(img, {
+				gsap.to(img, {
 					opacity: 0,
 					scaleX: 0,
+					duration: 1,
+					delay: 'random([0.2, 0.5, 0.4, 0.8])',
 					scaleY: 0,
 				})
 			})
