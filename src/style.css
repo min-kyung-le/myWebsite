@@ -361,7 +361,7 @@ html {
 	background-size: 280px 280px;
 }
 
-@media (min-width: 1060px) {
+@media (min-width: 900px) {
 	.a {
 		width: 80px;
 		height: 80px;
