@@ -1,5 +1,5 @@
 <template>
-	<div ref="target" class="box-snaps large-font">
+	<div ref="target" class="box-snaps f-l">
 		<sideMenu />
 		<TransitionGroup tag="ul" name="fade" id="container" class="container">
 			<div v-for="(item, idx) of items" class="item" :key="item">
@@ -8,7 +8,7 @@
 				>
 			</div>
 		</TransitionGroup>
-		<span class="tooltip">click!</span>
+		<span class="tooltip f-s">click!</span>
 	</div>
 </template>
 
@@ -91,19 +91,15 @@ export default {
 	position: absolute;
 	top: 0;
 	left: 0;
-	font-size: 30px;
-	padding: 4px 16px;
+	padding: 4px 12px;
 	color: var(--black);
-	background-color: var(--light2);
+	background-color: var(--light1);
 	z-index: 1000;
 	border-radius: 8px;
 	display: flex;
 	justify-content: center;
 	align-content: center;
 	font-weight: 600;
-}
-.large-font {
-	font-size: 4.5rem;
 }
 .container {
 	position: relative;

@@ -42,11 +42,6 @@ body {
 	overflow-x: hidden !important;
 }
 
-h1 {
-	font-size: 3.2em;
-	line-height: 1.1;
-}
-
 #app {
 	width: 100%;
 	font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -148,7 +143,6 @@ html {
 }
 
 .scroll-down-box {
-	font-size: medium;
 	opacity: 0;
 }
 .scroll-down {
@@ -172,7 +166,6 @@ html {
 .home1-snaps {
 	width: 100vw;
 	flex: none;
-	font-size: 28px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -195,15 +188,13 @@ html {
 .secense-wrap {
 	color: var(--darkgrey);
 	position: absolute;
-	font-size: 2rem;
 }
 
 .secense,
 .front {
-	height: 50px;
+	height: 80px;
 }
 .secense-wrap .title {
-	font-size: 3rem;
 	height: 108px;
 	top: 0;
 }
@@ -223,11 +214,10 @@ html {
 }
 
 .list {
-	font-size: 3.2rem;
 	color: var(--light1);
 	background-color: var(--black);
 	padding: 8px 4px 5px 4px;
-	height: 80px;
+	height: 40px;
 	border-bottom: solid 1px var(--light1);
 	opacity: 0;
 	transform: translateY(20px);
@@ -319,7 +309,6 @@ html {
 .img-group > .img-group-title {
 	display: block;
 	color: var(--light1);
-	font-size: 2.5rem;
 	margin-bottom: 18px;
 }
 
@@ -371,4 +360,74 @@ html {
 	height: 280px;
 	background-image: url(@/assets/imgs/animationcss.jpg);
 	background-size: 280px 280px;
+}
+
+@media (min-width: 900px) {
+	.list {
+		height: 40px;
+	}
+	.secense,
+	.front {
+		height: 40px;
+	}
+	.f-s {
+		font-size: 15px;
+	}
+	.f-sm {
+		font-size: 20px;
+	}
+	.f-m {
+		font-size: 26px;
+	}
+
+	.f-l {
+		font-size: 40px;
+	}
+}
+
+@media (min-width: 1060px) {
+	.list {
+		height: 80px;
+	}
+	.secense,
+	.front {
+		height: 70px;
+	}
+	.f-s {
+		font-size: 15px;
+	}
+	.f-sm {
+		font-size: 18px;
+	}
+
+	.f-m {
+		font-size: 23px;
+	}
+
+	.f-l {
+		font-size: 45px;
+	}
+}
+@media (min-width: 1450px) {
+	.list {
+		height: 80px;
+	}
+	.secense,
+	.front {
+		height: 80px;
+	}
+	.f-s {
+		font-size: 15px;
+	}
+	.f-sm {
+		font-size: 30px;
+	}
+
+	.f-m {
+		font-size: 36px;
+	}
+
+	.f-l {
+		font-size: 50px;
+	}
 }

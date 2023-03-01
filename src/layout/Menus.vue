@@ -1,5 +1,5 @@
 <template>
-	<div ref="target" id="home3" :class="'box-snaps holster-in-box ' + setClass">
+	<div ref="target" id="home3" :class="'f-l box-snaps holster-in-box ' + setClass">
 		<div class="menus-icon-wrap" @click="closeMenu">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"

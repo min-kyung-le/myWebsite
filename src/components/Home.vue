@@ -1,6 +1,6 @@
 <template>
 	<div class="box-snaps-wrap">
-		<div ref="app1" class="nav home1-snaps">
+		<div ref="app1" class="nav home1-snaps f-sm">
 			<div class="dl draw-line"></div>
 			<div class="typing-wrap">
 				<div class="span-wrap">
@@ -10,7 +10,7 @@
 			</div>
 			<div class="dl draw-line2"></div>
 			<div class="scroll-down-box">
-				<div class="scroll-down">{{ scrollDownText }}</div>
+				<div class="scroll-down f-s">{{ scrollDownText }}</div>
 				<div id="arrow-down" class="scroll-down">
 					<svg
 						fill="#e9ebec"
@@ -323,7 +323,6 @@ ul.wrap {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	font-size: 1.5rem;
 }
 .gtb {
 	background-color: var(--black);
@@ -342,7 +341,6 @@ ul.wrap {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-size: 1.5rem;
 }
 .g1 {
 	margin-top: 180px;

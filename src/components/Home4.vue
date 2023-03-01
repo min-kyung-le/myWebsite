@@ -50,7 +50,6 @@ export default {
 <style>
 .textbox {
 	width: 300px;
-	font-size: 2.5rem;
 }
 .home4-box {
 	display: flex;
