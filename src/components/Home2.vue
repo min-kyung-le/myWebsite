@@ -31,7 +31,6 @@
 				<div class="front front-2 f-m"></div>
 				<div class="front front-3 f-m"></div>
 				<div class="front front-4 f-m"></div>
-				<div class="secense-done f-m"></div>
 			</div>
 		</div>
 	</div>
@@ -57,7 +56,6 @@ export default {
 				'JAVA, Spring Boot, Node.js, JPA, MySQL를 이용한 자사솔루션 개발을 진행했습니다.',
 				'망설임없이 도전하는 성격으로 최신 IT경향, 최신 웹트렌드에 민감합니다.',
 			],
-			noPaddingInnerWidth: window.innerWidth - 160,
 		}
 	},
 	mounted() {

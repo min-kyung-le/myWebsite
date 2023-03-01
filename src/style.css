@@ -191,7 +191,7 @@ html {
 
 .secense,
 .front {
-	height: 80px;
+	height: 40px;
 }
 .secense-wrap .title {
 	height: 108px;
@@ -361,13 +361,13 @@ html {
 	background-size: 280px 280px;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 1060px) {
 	.a {
 		width: 80px;
 		height: 80px;
 	}
 	.list {
-		height: 40px;
+		height: 80px;
 	}
 	.secense,
 	.front {
@@ -377,12 +377,11 @@ html {
 		font-size: 15px;
 	}
 	.f-sm {
-		font-size: 20px;
+		font-size: 18px;
 	}
 	.f-m {
-		font-size: 26px;
+		font-size: 20px;
 	}
-
 	.f-l {
 		font-size: 40px;
 	}
