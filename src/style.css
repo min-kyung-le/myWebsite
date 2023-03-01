@@ -84,7 +84,6 @@ h1 {
 	display: flex;
 	flex-direction: column;
 	width: 97vw;
-	height: 100vh;
 }
 
 a:hover,
@@ -245,8 +244,7 @@ html {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	margin-top: 640px;
-	margin-bottom: 100px;
+	min-height: 100vh;
 }
 
 .graph-wrap {

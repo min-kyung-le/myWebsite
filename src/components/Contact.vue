@@ -23,7 +23,6 @@ const name = 'MinKyung Lee',
 	createDate = '01073190067'
 
 var getInitialItems = () => [name, email, blog, createDate]
-let moveOver
 
 export default {
 	name: 'Contact',

@@ -11,20 +11,28 @@
 			<div class="img animationcss"></div>
 		</div>
 		<div class="a"></div>
-		<div class="secense-wrap" :style="setStyle">
-			<div class="title">자신있게 말씀드리는 핵심 역량</div>
-			<div class="secense secense-1">
-				고객사에 파견되어 근무를 했기 때문에 다양한 사람들과 원활한 소통이 가능합니다.
+		<div style="min-height: 50vh">
+			<div class="secense-wrap" :style="setStyle">
+				<div class="title">자신있게 말씀드리는 핵심 역량</div>
+				<div class="secense secense-1">
+					고객사에 파견되어 근무를 했기 때문에 다양한 사람들과 원활한 소통이 가능합니다.
+				</div>
+				<div class="secense secense-2">
+					Javascript, Vue, Vuetify, chart.js로 프론트엔드 웹 개발을 진행했습니다.
+				</div>
+				<div class="secense secense-3">
+					JAVA, Spring Boot, Node.js, JPA, MySQL를 이용한 자사솔루션 개발을 진행했습니다.
+				</div>
+				<div class="secense secense-4">
+					망설임없이 도전하는 성격으로 최신 IT경향, 최신 웹트렌드에 민감합니다.
+				</div>
+				<div class="title front-title"></div>
+				<div class="front front-1"></div>
+				<div class="front front-2"></div>
+				<div class="front front-3"></div>
+				<div class="front front-4"></div>
+				<div class="secense-done"></div>
 			</div>
-			<div class="secense secense-2">Javascript, Vue, Vuetify, chart.js로 프론트엔드 웹 개발을 진행했습니다.</div>
-			<div class="secense secense-3">JAVA, JPA, Database, Node.js를 이용한 자사솔루션 개발을 진행했습니다.</div>
-			<div class="secense secense-4">망설임없이 도전하는 성격으로 최신 IT경향, 웹트렌드에 민감합니다.</div>
-			<div class="title front-title"></div>
-			<div class="front front-1"></div>
-			<div class="front front-2"></div>
-			<div class="front front-3"></div>
-			<div class="front front-4"></div>
-			<div class="secense-done"></div>
 		</div>
 	</div>
 </template>

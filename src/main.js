@@ -22,7 +22,7 @@ const options = {
 	icon: true,
 	rtl: false,
 	transition: 'Vue-Toastification__fade',
-	maxToasts: 16,
+	maxToasts: 5,
 	newestOnTop: true,
 }
 
