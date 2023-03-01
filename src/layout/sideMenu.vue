@@ -2,8 +2,9 @@
 	<div class="close-bg" style="background-color: var(--black); width: 100vw; position: absolute; left: 0; z-index: 1">
 		<Menus v-if="isShow" :isShow="isShow" :setClass="setClass" @isCloseMenu="menuBtn"></Menus>
 	</div>
-	<div class="menuBtn" @click="menuBtn(!isShow)">
+	<div class="menuBtn">
 		<svg
+			@click="menuBtn(!isShow)"
 			xmlns="http://www.w3.org/2000/svg"
 			width="30"
 			height="26"

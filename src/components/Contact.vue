@@ -35,7 +35,11 @@ export default {
 	methods: {
 		clickCopy(copy) {
 			const toast = useToast()
-			toast.success(copy + ' copy!')
+			if (copy.indexOf('blog') > -1) {
+				window.open(copy, '', '_blank')
+			} else {
+				toast.success(copy + ' copy!')
+			}
 		},
 		reset() {
 			this.items = getInitialItems()
@@ -77,7 +81,6 @@ a {
 	overflow: hidden;
 	position: relative;
 	display: inline-block;
-	text-decoration: none;
 }
 
 a::before,
