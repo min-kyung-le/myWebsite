@@ -156,13 +156,13 @@ export default {
 		slideLine() {
 			gsap.to('.draw-line', {
 				delay: 0.7,
-				width: window.innerWidth - 5,
+				width: '100vw',
 				duration: 1,
 				ease: 'power2.easeInOut',
 			})
 			gsap.to('.draw-line2', {
 				delay: 1,
-				width: window.innerWidth - 5,
+				width: '100vw',
 				duration: 1,
 				ease: 'power2.easeInOut',
 			})
@@ -330,8 +330,8 @@ ul.wrap {
 	opacity: 0;
 	position: absolute;
 	z-index: 1;
-	margin-top: 1%;
 	width: 100vw;
+	margin: 10px 0;
 }
 .gt {
 	opacity: 0;

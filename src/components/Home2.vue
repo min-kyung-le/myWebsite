@@ -160,13 +160,13 @@ export default {
 			let tl2 = gsap.timeline().to(
 				'.a',
 				{
-					x: '+=1100',
+					x: '70vw',
 					yoyo: true,
 					rotation: 1080,
 					ease: 'back.out(1.7)',
 				},
 				{
-					x: '-=1100',
+					x: '-70vw',
 					yoyo: true,
 					rotation: -1080,
 					ease: 'back.out(1.7)',
