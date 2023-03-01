@@ -1,19 +1,21 @@
 <template>
 	<div ref="target" class="box-snaps large-font">
 		<sideMenu />
-		<TransitionGroup tag="ul" name="fade" class="container">
-			<div v-for="(item, idx) of items" :id="'item' + idx" class="item" :key="item">
-				<a id="style-2" :data-replace="item" @click="clickCopy(item)"
+		<TransitionGroup tag="ul" name="fade" id="container" class="container">
+			<div v-for="(item, idx) of items" class="item" :key="item">
+				<a :id="'item' + idx" :data-replace="item" @click="clickCopy(item)"
 					><span>{{ item }}</span></a
 				>
 			</div>
 		</TransitionGroup>
+		<span class="tooltip">click!</span>
 	</div>
 </template>
 
 <script>
 import sideMenu from '@/layout/sideMenu.vue'
 import { useToast } from 'vue-toastification'
+import { gsap } from 'gsap'
 
 const name = 'MinKyung Lee',
 	email = 'minkyung1435@gmail.com',
@@ -21,6 +23,7 @@ const name = 'MinKyung Lee',
 	createDate = '01073190067'
 
 var getInitialItems = () => [name, email, blog, createDate]
+let moveOver
 
 export default {
 	name: 'Contact',
@@ -58,11 +61,48 @@ export default {
 	},
 	mounted() {
 		this.setTimeOutMove()
+		window.addEventListener('mousemove', e => {
+			gsap.to('.tooltip', {
+				opacity: 0,
+				duration: 0.2,
+				x: e.clientX + 5 + 'px',
+				y: e.clientY + 5 + 'px',
+				stagger: 0.15,
+				ease: 'none',
+			})
+		})
+
+		document.getElementById('container').addEventListener('mouseover', () => {
+			gsap.to('.tooltip', {
+				opacity: 1,
+			})
+		})
+		document.getElementById('container').addEventListener('mouseout', () => {
+			gsap.to('.tooltip', {
+				opacity: 0,
+			})
+		})
 	},
 }
 </script>
 
 <style>
+.tooltip {
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	font-size: 30px;
+	padding: 4px 16px;
+	color: var(--black);
+	background-color: var(--light2);
+	z-index: 1000;
+	border-radius: 8px;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	font-weight: 600;
+}
 .large-font {
 	font-size: 4.5rem;
 }
