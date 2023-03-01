@@ -173,8 +173,6 @@ html {
 }
 
 .a {
-	width: 100px;
-	height: 100px;
 	background-color: var(--light1);
 	margin-bottom: 17px;
 	margin-left: 10px;
@@ -188,6 +186,7 @@ html {
 .secense-wrap {
 	color: var(--darkgrey);
 	position: absolute;
+	width: 100vw;
 }
 
 .secense,
@@ -363,6 +362,10 @@ html {
 }
 
 @media (min-width: 900px) {
+	.a {
+		width: 80px;
+		height: 80px;
+	}
 	.list {
 		height: 40px;
 	}
@@ -386,6 +389,10 @@ html {
 }
 
 @media (min-width: 1060px) {
+	.a {
+		width: 80px;
+		height: 80px;
+	}
 	.list {
 		height: 80px;
 	}
@@ -409,6 +416,10 @@ html {
 	}
 }
 @media (min-width: 1450px) {
+	.a {
+		width: 100px;
+		height: 100px;
+	}
 	.list {
 		height: 80px;
 	}

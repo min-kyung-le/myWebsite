@@ -12,7 +12,7 @@
 		</div>
 		<div class="a"></div>
 		<div style="min-height: 50vh">
-			<div class="secense-wrap f-l" :style="setStyle">
+			<div class="secense-wrap f-l">
 				<div class="title">자신있게 말씀드리는 핵심 역량</div>
 				<div class="secense secense-1 f-m">
 					고객사에 파견되어 근무를 했기 때문에 다양한 사람들과 원활한 소통이 가능합니다.
@@ -46,7 +46,6 @@ gsap.registerPlugin(ScrollTrigger)
 gsap.registerPlugin(TextPlugin)
 
 let tl = gsap.timeline()
-let noPaddingInnerWidth = window.innerWidth - 160
 export default {
 	name: 'Home2',
 	data() {
@@ -58,23 +57,11 @@ export default {
 				'JAVA, Spring Boot, Node.js, JPA, MySQL를 이용한 자사솔루션 개발을 진행했습니다.',
 				'망설임없이 도전하는 성격으로 최신 IT경향, 최신 웹트렌드에 민감합니다.',
 			],
+			noPaddingInnerWidth: window.innerWidth - 160,
 		}
-	},
-	computed: {
-		setStyle() {
-			return 'width: ' + noPaddingInnerWidth + 'px;'
-		},
 	},
 	mounted() {
-		let secense = document.getElementsByClassName('secense')
-		let fronts = document.getElementsByClassName('front')
-
-		let i = 0
-		for (let sec of secense) {
-			let setclientHeight = sec.clientHeight * i + 110
-			fronts[i].style.top = setclientHeight + 'px'
-			i++
-		}
+		window.addEventListener('resize', this.handleResize)
 
 		ScrollTrigger.create({
 			trigger: '.img-group',
@@ -94,10 +81,28 @@ export default {
 				this.initImgs()
 			},
 		})
-		this.circleSqure()
-		this.isTyping()
+		this.handleResize()
+	},
+	beforeUnmount() {
+		window.removeEventListener('resize', this.handleResize)
 	},
 	methods: {
+		handleResize() {
+			this.circleSqure()
+			this.isTypingPosition()
+			this.isTyping()
+		},
+		isTypingPosition() {
+			let secense = document.getElementsByClassName('secense')
+			let fronts = document.getElementsByClassName('front')
+
+			let i = 0
+			for (let sec of secense) {
+				let setclientHeight = sec.clientHeight * i + 110
+				fronts[i].style.top = setclientHeight + 'px'
+				i++
+			}
+		},
 		initImgs() {
 			gsap.utils.toArray('.img').forEach(img => {
 				gsap.to(img, {
