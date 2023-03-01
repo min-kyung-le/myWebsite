@@ -2,8 +2,10 @@
 	<div ref="target" class="box-snaps large-font">
 		<sideMenu />
 		<TransitionGroup tag="ul" name="fade" class="container">
-			<div @click="clickCopy(item)" v-for="item in items" class="item" :key="item">
-				{{ item }}
+			<div v-for="(item, idx) of items" :id="'item' + idx" class="item" :key="item">
+				<a id="style-2" :data-replace="item" @click="clickCopy(item)"
+					><span>{{ item }}</span></a
+				>
 			</div>
 		</TransitionGroup>
 	</div>
@@ -67,7 +69,55 @@ export default {
 
 .item {
 	width: 100%;
-	margin-bottom: 10px;
+	margin-bottom: 18px;
+	height: 80px;
+}
+
+a {
+	overflow: hidden;
+	position: relative;
+	display: inline-block;
+	text-decoration: none;
+}
+
+a::before,
+a::after {
+	content: '';
+	position: absolute;
+	width: 100%;
+	left: 0;
+}
+a::before {
+	height: 2px;
+	bottom: 0;
+	transform-origin: 100% 50%;
+	transform: scaleY(0);
+	transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+a::after {
+	content: attr(data-replace);
+	height: 100%;
+	top: 0;
+	transform-origin: 100% 50%;
+	transform: translate3d(0, 200%, 0);
+	transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+a:hover::before {
+	transform-origin: 0% 50%;
+	transform: scaleY(1);
+}
+a:hover::after {
+	transform: translate3d(0, 0, 0);
+}
+
+a span {
+	display: inline-block;
+	transition: transform 0.3s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+a:hover span {
+	transform: translate3d(0, -200%, 0);
 }
 
 /* 1. declare transition */

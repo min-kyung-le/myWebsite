@@ -10,7 +10,7 @@ import 'vue-toastification/dist/index.css'
 
 const options = {
 	position: 'top-center',
-	timeout: 3000,
+	timeout: 2000,
 	closeOnClick: true,
 	pauseOnFocusLoss: true,
 	pauseOnHover: false,
@@ -21,6 +21,9 @@ const options = {
 	closeButton: 'button',
 	icon: true,
 	rtl: false,
+	transition: 'Vue-Toastification__fade',
+	maxToasts: 16,
+	newestOnTop: true,
 }
 
 const app = createApp(App)

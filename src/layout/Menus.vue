@@ -70,6 +70,7 @@
 </template>
 
 <script>
+import { useToast } from 'vue-toastification'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 let tl = gsap.timeline()
@@ -98,7 +99,8 @@ export default {
 	methods: {
 		goPage(link) {
 			if (link == '/graph' || link == '/career') {
-				alert('준비 중입니다.')
+				const toast = useToast()
+				toast.info('준비 중입니다.')
 			} else {
 				this.$router.push(link)
 			}
@@ -147,7 +149,7 @@ export default {
 
 				if (thisId.indexOf('list') != -1) {
 					tl.to('.arrow-right-black-svg' + thisId.charAt(thisId.length - 1), {
-						width: '0px',
+						width: 0,
 						duration: 0.2,
 						ease: 'power2.easeInOut',
 						overwrite: true,
