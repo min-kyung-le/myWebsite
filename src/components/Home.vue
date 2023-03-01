@@ -323,7 +323,7 @@ ul.wrap {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	font-size: 24px;
+	font-size: 1.5rem;
 }
 .gtb {
 	background-color: var(--black);
@@ -342,6 +342,7 @@ ul.wrap {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	font-size: 1.5rem;
 }
 .g1 {
 	margin-top: 180px;
@@ -358,7 +359,6 @@ ul.wrap {
 .cursor {
 	animation: blink 0.7s linear infinite;
 	display: inline-block;
-	font-size: 28px;
 }
 #cursor {
 	opacity: 0;

@@ -23,7 +23,6 @@
 }
 
 .menusbg {
-	font-size: large;
 	position: relative;
 	border-right: solid 1px var(--light1);
 	height: 100vh;
@@ -39,7 +38,8 @@ body {
 	display: flex;
 	min-width: 320px;
 	min-height: 100vh;
-	overflow: hidden;
+	overflow-y: auto;
+	overflow-x: hidden !important;
 }
 
 h1 {
@@ -195,7 +195,7 @@ html {
 .secense-wrap {
 	color: var(--darkgrey);
 	position: absolute;
-	font-size: 28px;
+	font-size: 2rem;
 }
 
 .secense,
@@ -203,7 +203,7 @@ html {
 	height: 50px;
 }
 .secense-wrap .title {
-	font-size: 65px;
+	font-size: 3rem;
 	height: 108px;
 	top: 0;
 }
@@ -319,7 +319,7 @@ html {
 .img-group > .img-group-title {
 	display: block;
 	color: var(--light1);
-	font-size: 48px;
+	font-size: 2.5rem;
 	margin-bottom: 18px;
 }
 
