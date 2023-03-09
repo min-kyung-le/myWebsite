@@ -40,6 +40,7 @@ export default {
 			if (copy.indexOf('blog') > -1) {
 				window.open(copy, '', '_blank')
 			} else {
+				this.$copyText(copy)
 				toast.success(copy + ' copy!')
 			}
 		},
